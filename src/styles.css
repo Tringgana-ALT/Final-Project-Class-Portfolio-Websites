@@ -1,0 +1,77 @@
+/* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #0B1929;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #38BDF8;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0284C7;
+    }
+    /* Glassmorphism custom classes */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+    .dark .glass-card {
+      background: rgba(10, 37, 64, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+    }
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .dark .glass-nav {
+      background: rgba(6, 24, 42, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(14, 165, 233, 0.18);
+    }
+    .tech-grid-pattern {
+      background-size: 32px 32px;
+      background-image: linear-gradient(to right, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+    }
+    .cursor-blink {
+      animation: blink 1s step-start infinite;
+    }
+    html {
+      scroll-padding-top: 5.5rem;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 500ms ease, transform 500ms ease;
+      }
+      .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto !important;
+      }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }

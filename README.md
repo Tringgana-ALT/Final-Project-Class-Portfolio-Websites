@@ -7,6 +7,15 @@
 3. Jalankan `npm run dev`, lalu buka URL lokal yang dicetak Vite.
 4. Untuk membuat hasil produksi, jalankan `npm run build`. Berkas hasilnya ada di `dist/`.
 
+## Struktur sumber
+
+- `index.html` berisi markup halaman.
+- `src/styles.css` berisi gaya khusus dan aksesibilitas gerakan.
+- `src/main.js` menjadi entry point aplikasi.
+- `src/interactions.js` mengatur navigasi, galeri, jadwal, terminal, dan modal.
+- `src/comments.js` mengelola guestbook dan listener komentar realtime.
+- `src/firebase.js` menginisialisasi Firebase Realtime Database dari environment.
+
 ## Firebase Realtime Database
 
 Firebase hanya dipakai untuk komentar. Artikel dan gambar tidak dikirim ke Firebase; keduanya akan ditambahkan ke situs dari file yang kamu unggah di chat.
