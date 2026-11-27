@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Website Kelas 10 RPL - Rekayasa Perangkat Lunak</title>
+<!-- Google Fonts: Plus Jakarta Sans & Fira Code -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Phosphor Icons CDN -->
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace'],
+          },
+          colors: {
+            ocean: {
+              50: '#F0F9FF',
+              100: '#E0F2FE',
+              200: '#BAE6FD',
+              300: '#7DD3FC',
+              400: '#38BDF8',
+              500: '#0EA5E9',
+              600: '#0284C7',
+              700: '#0369A1',
+              800: '#075985',
+              900: '#0C4A6E',
+              950: '#082F49',
+              navy: '#0A2540',
+              deep: '#06182A',
+            }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #0B1929;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #38BDF8;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0284C7;
+    }
+    /* Glassmorphism custom classes */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+    .dark .glass-card {
+      background: rgba(10, 37, 64, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+    }
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .dark .glass-nav {
+      background: rgba(6, 24, 42, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(14, 165, 233, 0.18);
+    }
+    .tech-grid-pattern {
+      background-size: 32px 32px;
+      background-image: linear-gradient(to right, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+    }
+    .cursor-blink {
+      animation: blink 1s step-start infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-ocean-deep text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 tech-grid-pattern min-h-screen selection:bg-ocean-400 selection:text-white">
+<!-- NAVBAR -->
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-nav" id="navbar">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
+<!-- Logo Brand -->
+<a class="flex items-center gap-3 group" href="#">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-ocean-600 via-ocean-500 to-ocean-400 flex items-center justify-center text-white shadow-lg shadow-ocean-500/25 group-hover:scale-105 transition-all duration-300">
+<i class="ph ph-terminal-window text-2xl"></i>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-ocean-navy via-ocean-700 to-ocean-500 dark:from-white dark:via-ocean-300 dark:to-ocean-400 bg-clip-text text-transparent">
+              10 RPL
+            </span>
+<span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 font-semibold">v1.0-alpha</span>
+</div>
+<span class="text-[10px] font-mono tracking-wider text-ocean-600 dark:text-ocean-400 uppercase -mt-0.5 font-semibold">
+            &lt;Software Engineering /&gt;
+          </span>
+</div>
+</a>
+<!-- Desktop Nav Items -->
+<nav class="hidden md:flex items-center gap-1 lg:gap-1.5">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-ocean-600 dark:hover:text-ocean-300 hover:bg-ocean-50 dark:hover:bg-ocean-900/50 transition" href="#about">Tentang Kami</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-ocean-600 dark:hover:text-ocean-300 hover:bg-ocean-50 dark:hover:bg-ocean-900/50 transition" href="#struktur">Pengurus Kelas</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-ocean-600 dark:hover:text-ocean-300 hover:bg-ocean-50 dark:hover:bg-ocean-900/50 transition" href="#galeri">Galeri Nyata</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-ocean-600 dark:hover:text-ocean-300 hover:bg-ocean-50 dark:hover:bg-ocean-900/50 transition" href="#jadwal">Jadwal &amp; Lab</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-ocean-600 dark:hover:text-ocean-300 hover:bg-ocean-50 dark:hover:bg-ocean-900/50 transition" href="#komentar">Papan Menfess</a>
+</nav>
+<!-- Right Action & Dark Mode Toggle -->
+<div class="flex items-center gap-2.5">
+<!-- Live status chips (desktop) -->
+<div class="hidden xl:flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300 border border-emerald-300/40">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+            Kas: Rp 142.000
+          </span>
+</div>
+<button aria-label="Toggle Tema" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-ocean-900/80 hover:bg-slate-200 dark:hover:bg-ocean-800 text-slate-700 dark:text-ocean-300 flex items-center justify-center transition border border-slate-200 dark:border-ocean-700/50 shadow-sm" id="themeToggle">
+<i class="ph ph-moon text-lg" id="themeIcon"></i>
+</button>
+<a class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-ocean-600 to-ocean-500 hover:from-ocean-700 hover:to-ocean-600 text-white shadow-md shadow-ocean-500/25 transition hover:shadow-lg hover:-translate-y-0.5" href="#komentar">
+<i class="ph ph-chat-circle-dots text-base"></i>
+<span>Kirim Menfess</span>
+</a>
+<!-- Mobile Menu Button -->
+<button aria-label="Menu" class="md:hidden w-9 h-9 rounded-xl bg-slate-100 dark:bg-ocean-900 text-slate-700 dark:text-ocean-300 flex items-center justify-center border border-slate-200 dark:border-ocean-700/50" id="mobileMenuBtn">
+<i class="ph ph-list text-xl" id="mobileMenuIcon"></i>
+</button>
+</div>
+</div>
+<!-- Mobile Dropdown Menu -->
+<div class="hidden md:hidden px-4 pt-2 pb-5 space-y-1.5 border-t border-slate-200 dark:border-ocean-900/80 bg-white/95 dark:bg-ocean-deep/95 backdrop-blur-lg" id="mobileMenu">
+<div class="py-1 flex items-center gap-2 text-xs font-mono text-emerald-600 dark:text-emerald-400">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Status Kas: Rp 142.000 (Lunas 85%)
+      </div>
+<a class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-ocean-50 dark:hover:bg-ocean-900/60" href="#about">Tentang Kami</a>
+<a class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-ocean-50 dark:hover:bg-ocean-900/60" href="#struktur">Pengurus Kelas</a>
+<a class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-ocean-50 dark:hover:bg-ocean-900/60" href="#galeri">Galeri Nyata</a>
+<a class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-ocean-50 dark:hover:bg-ocean-900/60" href="#jadwal">Jadwal Mapel &amp; Lab</a>
+<a class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-ocean-50 dark:hover:bg-ocean-900/60" href="#komentar">Papan Menfess</a>
+</div>
+</header>
+<!-- MAIN CONTENT -->
+<main class="pt-20 lg:pt-22">
+<!-- LIVE STATUS BAR -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-1">
+<div class="flex flex-wrap items-center justify-between gap-2 px-3.5 py-2 rounded-xl bg-ocean-100/70 dark:bg-ocean-900/40 border border-ocean-200/80 dark:border-ocean-800/80 text-xs font-mono">
+<div class="flex items-center gap-2 text-ocean-800 dark:text-ocean-200">
+<span class="inline-flex h-2 w-2 rounded-full bg-rose-500 animate-pulse"></span>
+<span><strong>LIVE STATUS:</strong> Lab 2 AC-nya lagi dingin nusuk | PC #04 bluescreen</span>
+</div>
+<div class="flex items-center gap-3 text-slate-500 dark:text-slate-400 text-[11px]">
+<span><i class="ph ph-lightning text-amber-500"></i> Bug Hari Ini: <strong>42</strong></span>
+<span><i class="ph ph-coffee text-amber-600"></i> Kopi Kantin: <strong>Ready</strong></span>
+</div>
+</div>
+</div>
+<!-- HERO SECTION -->
+<section class="relative overflow-hidden pt-6 pb-12 lg:pt-8 lg:pb-16" id="about">
+<!-- Glow ambient background -->
+<div class="absolute -top-24 -left-24 w-80 h-80 bg-ocean-400/20 dark:bg-ocean-500/15 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/2 -right-24 w-80 h-80 bg-ocean-600/15 dark:bg-ocean-400/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Text Content -->
+<div class="lg:col-span-7 space-y-5">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ocean-100 dark:bg-ocean-900/70 border border-ocean-200 dark:border-ocean-700/60 text-ocean-800 dark:text-ocean-300 text-xs font-semibold tracking-wide shadow-sm">
+<span class="flex h-2 w-2 rounded-full bg-emerald-500"></span>
+<i class="ph ph-terminal text-sm"></i>
+              Portal Resmi Kelas 10 RPL • SMKN 2024/2025
+            </div>
+<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.18]">
+              Bukan programmer pro, <br class="hidden sm:inline"/>
+<span class="bg-gradient-to-r from-ocean-600 via-ocean-500 to-sky-400 bg-clip-text text-transparent">
+                pantang pulang sebelum titik koma ketemu!
+              </span>
+</h1>
+<p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+              Koleksi 36 manusia yang tiap hari pusing mikirin git conflict, PC lab restart sendiri pas koding belum di-<code class="font-mono text-xs px-1.5 py-0.5 rounded bg-ocean-100 dark:bg-ocean-900 text-ocean-700 dark:text-ocean-300 font-bold">Ctrl+S</code>, tapi solid luar dalam kalau diajak kompak nunda ulangan.
+            </p>
+<!-- Action Buttons -->
+<div class="flex flex-wrap items-center gap-3 pt-1">
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-ocean-600 to-ocean-500 hover:from-ocean-700 hover:to-ocean-600 shadow-md shadow-ocean-500/25 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5" href="#jadwal">
+<i class="ph ph-calendar-check text-lg"></i>
+<span>Cek Jadwal &amp; Lab</span>
+</a>
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm text-ocean-700 dark:text-ocean-200 bg-white dark:bg-ocean-900/60 hover:bg-slate-100 dark:hover:bg-ocean-800 border border-slate-200 dark:border-ocean-700/60 shadow-sm transition-all duration-200 hover:-translate-y-0.5" href="#struktur">
+<i class="ph ph-users text-lg"></i>
+<span>Ngintip Pengurus</span>
+</a>
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm text-pink-600 dark:text-pink-300 bg-pink-50 dark:bg-pink-950/40 hover:bg-pink-100 dark:hover:bg-pink-900/50 border border-pink-200 dark:border-pink-800/50 transition-all duration-200" href="#komentar">
+<i class="ph ph-heart text-lg"></i>
+<span>Kirim Menfess</span>
+</a>
+</div>
+<!-- Realita Kelas 10 RPL Card (Menggantikan Filosofi AI Slop) -->
+<div class="p-4 rounded-2xl glass-card border border-ocean-200/80 dark:border-ocean-800/80 shadow-sm">
+<div class="flex items-center gap-2 mb-2 pb-2 border-b border-slate-200/60 dark:border-ocean-800/60">
+<span class="w-6 h-6 rounded-lg bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xs font-bold font-mono">!</span>
+<h4 class="text-xs sm:text-sm font-bold text-slate-800 dark:text-white uppercase tracking-wider">Hukum Alam &amp; Realita 10 RPL:</h4>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs text-slate-600 dark:text-slate-300">
+<div class="p-2 rounded-xl bg-slate-50 dark:bg-ocean-900/40 border border-slate-200/50 dark:border-ocean-800/40">
+<span class="font-bold text-ocean-600 dark:text-ocean-400">90% Kasus Error:</span> Lupa tanda titik koma <code class="font-mono text-[11px] bg-slate-200 dark:bg-ocean-800 px-1 rounded">;</code> atau typo kurung kurawal.
+                </div>
+<div class="p-2 rounded-xl bg-slate-50 dark:bg-ocean-900/40 border border-slate-200/50 dark:border-ocean-800/40">
+<span class="font-bold text-ocean-600 dark:text-ocean-400">Tragedi Lab:</span> Kabel LAN kesenggol kaki pas lagi asyik submit kuis online praktikum.
+                </div>
+<div class="p-2 rounded-xl bg-slate-50 dark:bg-ocean-900/40 border border-slate-200/50 dark:border-ocean-800/40">
+<span class="font-bold text-ocean-600 dark:text-ocean-400">Suhu Ruang:</span> AC Lab 2 dingin kutub, tapi PC rakitan 2012 bikin anget ruangan.
+                </div>
+</div>
+</div>
+</div>
+<!-- Hero Graphic: INTERACTIVE MINI TERMINAL CLI -->
+<div class="lg:col-span-5 space-y-4">
+<!-- Terminal CLI Nyata & Interaktif -->
+<div class="rounded-2xl overflow-hidden glass-card shadow-xl border border-ocean-200/80 dark:border-ocean-700/60 font-mono text-xs">
+<!-- Window top bar -->
+<div class="px-4 py-2.5 bg-slate-100/90 dark:bg-ocean-950/90 border-b border-slate-200 dark:border-ocean-800 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-rose-500/90"></div>
+<div class="w-3 h-3 rounded-full bg-amber-500/90"></div>
+<div class="w-3 h-3 rounded-full bg-emerald-500/90"></div>
+<span class="ml-1 text-[11px] font-semibold text-slate-600 dark:text-slate-400">bash — rpl10@smk-lab2:~</span>
+</div>
+<span class="text-[10px] text-ocean-600 dark:text-ocean-400 bg-ocean-100 dark:bg-ocean-900/80 px-2 py-0.5 rounded font-mono">interaktif</span>
+</div>
+<!-- Terminal Body Output -->
+<div class="p-4 h-56 overflow-y-auto space-y-2 bg-slate-900 text-slate-200 text-xs font-mono leading-relaxed" id="terminalScreen">
+<div>
+<span class="text-emerald-400">rpl10@lab2</span>:<span class="text-ocean-400">~</span>$ neofetch --class
+                </div>
+<div class="text-slate-300 pl-2 border-l-2 border-ocean-500 text-[11px] space-y-0.5">
+<p><span class="text-ocean-300">Kelas:</span> X RPL (Rekayasa Perangkat Lunak)</p>
+<p><span class="text-ocean-300">Wali Kelas:</span> Pak Hendra Wijaya, S.Kom</p>
+<p><span class="text-ocean-300">Kekuatan:</span> Solid pas minta dispensasi</p>
+<p><span class="text-ocean-300">Kelemahan:</span> Typo semicolon &amp; koneksi hotspot</p>
+</div>
+<div id="cliDynamicLogs"></div>
+<div class="flex items-center gap-1 text-slate-200 pt-1">
+<span class="text-emerald-400">guest@10rpl</span>:<span class="text-ocean-400">~</span>$ 
+                  <span class="text-amber-300" id="terminalCurrentInput">npm run curhat</span>
+<span class="w-2 h-4 bg-ocean-400 inline-block cursor-blink"></span>
+</div>
+</div>
+<!-- Terminal Quick Command Bar -->
+<div class="p-2.5 bg-slate-800 border-t border-slate-700/80">
+<div class="text-[10px] text-slate-400 mb-1.5 uppercase font-semibold">Klik Command Cepat:</div>
+<div class="flex flex-wrap gap-1.5">
+<button class="px-2.5 py-1 rounded bg-slate-700 hover:bg-ocean-600 text-slate-200 text-[11px] font-mono transition" onclick="runCommand('npm run curhat')">
+                    curhat.sh
+                  </button>
+<button class="px-2.5 py-1 rounded bg-slate-700 hover:bg-ocean-600 text-slate-200 text-[11px] font-mono transition" onclick="runCommand('cat rules.txt')">
+                    rules.txt
+                  </button>
+<button class="px-2.5 py-1 rounded bg-slate-700 hover:bg-ocean-600 text-slate-200 text-[11px] font-mono transition" onclick="runCommand('ping lab_pc3')">
+                    ping lab_pc3
+                  </button>
+<button class="px-2 py-1 rounded bg-rose-900/60 hover:bg-rose-700 text-rose-200 text-[11px] font-mono transition" onclick="runCommand('clear')">
+                    clear
+                  </button>
+</div>
+</div>
+</div>
+<!-- Stats Grid Realitas -->
+<div class="grid grid-cols-3 gap-2.5">
+<div class="p-3 rounded-xl glass-card text-center transition hover:-translate-y-0.5 duration-200">
+<div class="text-2xl font-extrabold text-slate-900 dark:text-white">36</div>
+<div class="text-[11px] font-medium text-slate-500 dark:text-slate-400">Kepala Pusing</div>
+</div>
+<div class="p-3 rounded-xl glass-card text-center transition hover:-translate-y-0.5 duration-200">
+<div class="text-2xl font-extrabold text-ocean-600 dark:text-ocean-400">0</div>
+<div class="text-[11px] font-medium text-slate-500 dark:text-slate-400">Titik Koma Ditinggal</div>
+</div>
+<div class="p-3 rounded-xl glass-card text-center transition hover:-translate-y-0.5 duration-200">
+<div class="text-2xl font-extrabold text-amber-500">100%</div>
+<div class="text-[11px] font-medium text-slate-500 dark:text-slate-400">Solid Saat Lapar</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- STRUKTUR KELAS SECTION -->
+<section class="py-12 sm:py-16 bg-slate-100/60 dark:bg-ocean-950/40 relative" id="struktur">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="text-center max-w-2xl mx-auto mb-10">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ocean-100 dark:bg-ocean-900/80 text-ocean-700 dark:text-ocean-300 text-xs font-bold uppercase tracking-wider mb-2">
+<i class="ph ph-crown text-sm"></i>
+            Aparatur &amp; Pawang Kelas
+          </div>
+<h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Struktur Organisasi Kelas 10 RPL
+          </h2>
+<p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2">
+            Sosok-sosok berani yang siap disalahkan pas kelas gaduh dan garda terdepan pelobi dispensasi guru.
+          </p>
+</div>
+<!-- 1. Wali Kelas (Top Tier Highlight) -->
+<div class="max-w-md mx-auto mb-8">
+<div class="p-5 rounded-2xl glass-card border-2 border-ocean-400/40 dark:border-ocean-500/30 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative group">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-0.5 rounded-full bg-gradient-to-r from-ocean-600 to-ocean-500 text-white text-[10px] font-bold tracking-wider uppercase shadow-md">
+              Pawang Utama &amp; Penasihat
+            </div>
+<div class="relative w-20 h-20 mx-auto mb-3 mt-1">
+<div class="w-full h-full rounded-2xl bg-gradient-to-tr from-ocean-600 to-ocean-300 p-1 shadow-md">
+<div class="w-full h-full rounded-[14px] bg-slate-200 dark:bg-ocean-900 flex items-center justify-center text-ocean-600 dark:text-ocean-300 font-bold text-3xl">
+<i class="ph ph-chalkboard-teacher"></i>
+</div>
+</div>
+<span class="absolute bottom-0 right-0 w-5 h-5 rounded-full bg-emerald-500 border-2 border-white dark:border-ocean-900 flex items-center justify-center text-white text-[10px]" title="Aktif Mengajar">
+<i class="ph ph-check"></i>
+</span>
+</div>
+<h3 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white">Hendra Wijaya, S.Kom.</h3>
+<p class="text-xs font-semibold text-ocean-600 dark:text-ocean-400 uppercase tracking-wider mt-0.5">Wali Kelas 10 RPL</p>
+<div class="mt-2.5 p-2 rounded-xl bg-ocean-50 dark:bg-ocean-900/50 text-xs text-slate-600 dark:text-slate-300 border border-ocean-100 dark:border-ocean-800">
+              "Paling sabar ngingetin tugas praktikum, tapi kalau udah razia rambut atau nemu murid mabar pas jam produktif langsung ketar-ketir!"
+            </div>
+</div>
+</div>
+<!-- 2. Core Leadership (Ketua, Wakil, Sekretaris, Bendahara) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+<!-- Ketua Kelas -->
+<div class="p-4 rounded-2xl glass-card transition-all duration-200 hover:-translate-y-1 hover:border-ocean-400 shadow-sm text-center">
+<div class="w-14 h-14 mx-auto rounded-2xl bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400 flex items-center justify-center text-2xl mb-2.5">
+<i class="ph ph-crown"></i>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 inline-block mb-1.5">
+              Ketua Kelas
+            </span>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Ahmad Fauzan</h4>
+<p class="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-snug">
+              Korban penunjukan aklamasi pas MOS. Bertugas melobi guru waktu tugas numpuk &amp; pemegang kunci sakti lab.
+            </p>
+</div>
+<!-- Wakil Ketua -->
+<div class="p-4 rounded-2xl glass-card transition-all duration-200 hover:-translate-y-1 hover:border-ocean-400 shadow-sm text-center">
+<div class="w-14 h-14 mx-auto rounded-2xl bg-ocean-100 dark:bg-ocean-900/90 text-ocean-600 dark:text-ocean-300 flex items-center justify-center text-2xl mb-2.5">
+<i class="ph ph-shield-star"></i>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-ocean-100 text-ocean-800 dark:bg-ocean-900 dark:text-ocean-300 inline-block mb-1.5">
+              Wakil Ketua
+            </span>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Bima Arya Pratama</h4>
+<p class="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-snug">
+              Backup ketua kalau ketiduran di pojokan lab. Spesialis negosiasi jam pulang &amp; peredam emosi antar meja.
+            </p>
+</div>
+<!-- Sekretaris -->
+<div class="p-4 rounded-2xl glass-card transition-all duration-200 hover:-translate-y-1 hover:border-ocean-400 shadow-sm text-center">
+<div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-300 flex items-center justify-center text-2xl mb-2.5">
+<i class="ph ph-notepad"></i>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 inline-block mb-1.5">
+              Sekretaris
+            </span>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Chelsea Olivia R.</h4>
+<p class="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-snug">
+              Tulisan di whiteboard estetik, tapi tensi darah naik tiap kali spidol hilang dan buku absen kelas kelupaan diisi.
+            </p>
+</div>
+<!-- Bendahara -->
+<div class="p-4 rounded-2xl glass-card transition-all duration-200 hover:-translate-y-1 hover:border-ocean-400 shadow-sm text-center">
+<div class="w-14 h-14 mx-auto rounded-2xl bg-purple-100 dark:bg-purple-950/80 text-purple-600 dark:text-purple-300 flex items-center justify-center text-2xl mb-2.5">
+<i class="ph ph-coins"></i>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-300 inline-block mb-1.5">
+              Bendahara Galak
+            </span>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Dinda Syifa Khairani</h4>
+<p class="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-snug">
+              Rent-collector kelas sejati. Jangan berani lewat depan mejanya kalau kas 2 ribu rupiah mingguan belum lunas!
+            </p>
+</div>
+</div>
+<!-- 3. Koordinator Seksi (Peralatan, Keamanan, Kebersihan) -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<!-- Seksi Lab & Peralatan -->
+<div class="p-4 rounded-2xl glass-card flex items-start gap-3.5 hover:border-ocean-400 transition">
+<div class="w-11 h-11 rounded-xl bg-ocean-100 dark:bg-ocean-950/70 text-ocean-600 dark:text-ocean-400 flex items-center justify-center text-xl shrink-0 mt-0.5">
+<i class="ph ph-plugs"></i>
+</div>
+<div>
+<span class="text-[10px] font-bold text-ocean-600 dark:text-ocean-400 uppercase tracking-wider">Sie Lab &amp; Colokan</span>
+<h5 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Gilang Ramadhan</h5>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Pawang kabel HDMI proyektor kusut dan colokan extension lab yang suka meletup kaget.</p>
+</div>
+</div>
+<!-- Seksi Keamanan -->
+<div class="p-4 rounded-2xl glass-card flex items-start gap-3.5 hover:border-ocean-400 transition">
+<div class="w-11 h-11 rounded-xl bg-rose-100 dark:bg-rose-950/70 text-rose-600 dark:text-rose-300 flex items-center justify-center text-xl shrink-0 mt-0.5">
+<i class="ph ph-warning-circle"></i>
+</div>
+<div>
+<span class="text-[10px] font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">Sie Radar Guru</span>
+<h5 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Fajar Hidayat</h5>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Paling depan teriak <em>"WOY ADA GURU!"</em> pas seisi kelas lagi mabar Mobile Legends santai.</p>
+</div>
+</div>
+<!-- Seksi Kebersihan -->
+<div class="p-4 rounded-2xl glass-card flex items-start gap-3.5 hover:border-ocean-400 transition">
+<div class="w-11 h-11 rounded-xl bg-teal-100 dark:bg-teal-950/70 text-teal-600 dark:text-teal-300 flex items-center justify-center text-xl shrink-0 mt-0.5">
+<i class="ph ph-broom"></i>
+</div>
+<div>
+<span class="text-[10px] font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider">Sie Debat Sampah</span>
+<h5 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Eko Prasetyo</h5>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Tiap sore debat kusir nagih giliran piket buang sampah bungkus basreng ke tong belakang.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- GALERI KEGIATAN SECTION (Real & Relatable Stories) -->
+<section class="py-12 sm:py-16 relative" id="galeri">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Header & Filter Tabs -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ocean-100 dark:bg-ocean-900/80 text-ocean-700 dark:text-ocean-300 text-xs font-bold uppercase tracking-wider mb-2">
+<i class="ph ph-camera text-sm"></i>
+              Dokumentasi Tanpa Filter
+            </div>
+<h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              Galeri Realita &amp; Memori Kelas
+            </h2>
+<p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
+              Bukan foto brosur pencitraan. Ini momen nyata dari laptop bluescreen, ramenya bus tour, sampai kalah futsal terhormat.
+            </p>
+</div>
+<!-- Category Filter Buttons -->
+<div class="flex flex-wrap gap-1.5" id="galleryFilterButtons">
+<button class="filter-btn active px-3.5 py-1.5 rounded-xl text-xs font-bold bg-ocean-600 text-white shadow-sm transition" data-filter="all">
+              Semua Momen
+            </button>
+<button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-ocean-900/60 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-ocean-800 hover:border-ocean-400 transition" data-filter="lab">
+              Drama Lab
+            </button>
+<button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-ocean-900/60 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-ocean-800 hover:border-ocean-400 transition" data-filter="event">
+              Lomba &amp; Kerusuhan
+            </button>
+<button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-ocean-900/60 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-ocean-800 hover:border-ocean-400 transition" data-filter="outdoor">
+              Tour &amp; Bolos Positif
+            </button>
+</div>
+</div>
+<!-- Gallery Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="galleryGrid">
+<!-- Item 1: Lab -->
+<div class="gallery-item group relative rounded-2xl overflow-hidden glass-card cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300" data-category="lab" onclick="openModal('Praktikum Lab: Algoritma &amp; Debugging', '4 jam cuma nyari error yang ternyata gara-gara typo tanda kurung kurawal {}. PC Lab 04 sempet bluescreen pas mau ditest compile!', 'lab-code')">
+<div class="h-52 bg-gradient-to-tr from-ocean-950 via-ocean-900 to-ocean-700 flex flex-col items-center justify-center p-5 text-center text-white relative overflow-hidden group-hover:scale-102 transition-transform duration-300">
+<div class="absolute inset-0 opacity-15 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<i class="ph ph-bug text-4xl mb-2 text-rose-400"></i>
+<span class="text-[10px] font-mono bg-ocean-800/90 px-2 py-0.5 rounded text-ocean-200 border border-ocean-600/50 mb-1">Error: Expected ';'</span>
+<h4 class="text-base font-bold">Praktikum Lab: Algoritma &amp; Debugging</h4>
+<p class="text-xs text-ocean-200/80 mt-1">4 jam pusing cuma gara-gara salah kurung kurawal `{}`</p>
+</div>
+<div class="p-3.5 bg-white/90 dark:bg-ocean-900/90 flex items-center justify-between border-t border-slate-100 dark:border-ocean-800">
+<div>
+<span class="text-[10px] font-bold text-ocean-600 dark:text-ocean-400 uppercase tracking-wider">Lab Komputer 02</span>
+<p class="text-xs font-semibold text-slate-700 dark:text-slate-200">Tragedi PC #04 Bluescreen</p>
+</div>
+<span class="text-[11px] text-slate-400 font-mono">14 Jan 2025</span>
+</div>
+</div>
+<!-- Item 2: Classmeeting -->
+<div class="gallery-item group relative rounded-2xl overflow-hidden glass-card cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300" data-category="event" onclick="openModal('Classmeeting: Kalah Futsal Tapi Menang Ricuh', 'Kalah 1-3 lawan kakak kelas 12, tapi suporter 10 RPL paling heboh bawa ember cat &amp; drum galon air mineral buat yel-yel!', 'futsal')">
+<div class="h-52 bg-gradient-to-tr from-sky-900 via-sky-800 to-cyan-700 flex flex-col items-center justify-center p-5 text-center text-white relative overflow-hidden group-hover:scale-102 transition-transform duration-300">
+<i class="ph ph-megaphone text-4xl mb-2 text-amber-300"></i>
+<span class="text-[10px] font-mono bg-sky-950/80 px-2 py-0.5 rounded text-cyan-200 border border-cyan-400/50 mb-1">Skor: 1 - 3 (Tetap Bangga)</span>
+<h4 class="text-base font-bold">Kalah Futsal Tapi Menang Ricuh</h4>
+<p class="text-xs text-cyan-100 mt-1">Suporter 10 RPL bawa galon &amp; ember cat</p>
+</div>
+<div class="p-3.5 bg-white/90 dark:bg-ocean-900/90 flex items-center justify-between border-t border-slate-100 dark:border-ocean-800">
+<div>
+<span class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Lapangan Sekolah</span>
+<p class="text-xs font-semibold text-slate-700 dark:text-slate-200">Classmeeting Semester Gasal</p>
+</div>
+<span class="text-[11px] text-slate-400 font-mono">18 Des 2024</span>
+</div>
+</div>
+<!-- Item 3: Outdoor / Study Tour -->
+<div class="gallery-item group relative rounded-2xl overflow-hidden glass-card cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300" data-category="outdoor" onclick="openModal('Kunjungan Industri: Ekspektasi vs Realita', 'Tujuan utama belajar budaya kerja startup teknologi di Jakarta. Realitanya: 80% molor tidur di bus AC dan berburu snack cilok di rest area!', 'tour')">
+<div class="h-52 bg-gradient-to-tr from-indigo-950 via-indigo-900 to-ocean-800 flex flex-col items-center justify-center p-5 text-center text-white relative overflow-hidden group-hover:scale-102 transition-transform duration-300">
+<i class="ph ph-bus text-4xl mb-2 text-indigo-300"></i>
+<span class="text-[10px] font-mono bg-indigo-950/90 px-2 py-0.5 rounded text-indigo-200 border border-indigo-500/50 mb-1">Bus Pariwisata AC Dingin</span>
+<h4 class="text-base font-bold">Kunjungan Industri (Study Tour)</h4>
+<p class="text-xs text-indigo-100 mt-1">Ekspektasi startup, realita tidur pules</p>
+</div>
+<div class="p-3.5 bg-white/90 dark:bg-ocean-900/90 flex items-center justify-between border-t border-slate-100 dark:border-ocean-800">
+<div>
+<span class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Study Tour Jakarta</span>
+<p class="text-xs font-semibold text-slate-700 dark:text-slate-200">Misi Berburu Oleh-oleh</p>
+</div>
+<span class="text-[11px] text-slate-400 font-mono">22 Nov 2024</span>
+</div>
+</div>
+<!-- Item 4: Lab & Workshop Rakit PC -->
+<div class="gallery-item group relative rounded-2xl overflow-hidden glass-card cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300" data-category="lab" onclick="openModal('Bongkar Hardware &amp; Rakit PC Jadul', 'Rakit PC zaman pentium, pas dinyalain kipas heatsink muter kenceng mirip helikopter tapi display monitor no signal. Ternyata RAM-nya kendor belum diklik!', 'hardware')">
+<div class="h-52 bg-gradient-to-tr from-slate-900 via-slate-800 to-ocean-900 flex flex-col items-center justify-center p-5 text-center text-white relative overflow-hidden group-hover:scale-102 transition-transform duration-300">
+<i class="ph ph-cpu text-4xl mb-2 text-emerald-400"></i>
+<span class="text-[10px] font-mono bg-slate-900/90 px-2 py-0.5 rounded text-emerald-200 border border-emerald-500/50 mb-1">Status: No Signal 💀</span>
+<h4 class="text-base font-bold">Bongkar Hardware &amp; Rakit PC</h4>
+<p class="text-xs text-slate-200 mt-1">Kipas muter kenceng, display gelap gulita</p>
+</div>
+<div class="p-3.5 bg-white/90 dark:bg-ocean-900/90 flex items-center justify-between border-t border-slate-100 dark:border-ocean-800">
+<div>
+<span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Sistem Komputer</span>
+<p class="text-xs font-semibold text-slate-700 dark:text-slate-200">Korban RAM Belum Pas</p>
+</div>
+<span class="text-[11px] text-slate-400 font-mono">05 Nov 2024</span>
+</div>
+</div>
+<!-- Item 5: Lomba 17-an -->
+<div class="gallery-item group relative rounded-2xl overflow-hidden glass-card cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300" data-category="event" onclick="openModal('Lomba 17-an Tarik Tambang', 'Tangan kapalan, celana kotor kena tanah becek lapangan, tapi berhasil sabet juara 2 tingkat angkatan demi kehormatan RPL!', 'lomba17')">
+<div class="h-52 bg-gradient-to-tr from-rose-950 via-rose-900 to-amber-700 flex flex-col items-center justify-center p-5 text-center text-white relative overflow-hidden group-hover:scale-102 transition-transform duration-300">
+<i class="ph ph-trophy text-4xl mb-2 text-amber-300"></i>
+<span class="text-[10px] font-mono bg-rose-950/90 px-2 py-0.5 rounded text-rose-200 border border-rose-400/50 mb-1">Juara 2 Tarik Tambang</span>
+<h4 class="text-base font-bold">Lomba 17-an Tarik Tambang</h4>
+<p class="text-xs text-amber-100 mt-1">Kapalan &amp; celana kotor terbayar lunas</p>
+</div>
+<div class="p-3.5 bg-white/90 dark:bg-ocean-900/90 flex items-center justify-between border-t border-slate-100 dark:border-ocean-800">
+<div>
+<span class="text-[10px] font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">Halaman Sekolah</span>
+<p class="text-xs font-semibold text-slate-700 dark:text-slate-200">Semarak HUT Kemerdekaan</p>
+</div>
+<span class="text-[11px] text-slate-400 font-mono">17 Agu 2024</span>
+</div>
+</div>
+<!-- Item 6: Hari Guru -->
+<div class="gallery-item group relative rounded-2xl overflow-hidden glass-card cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300" data-category="outdoor" onclick="openModal('Surprise Hari Guru Pak Hendra', 'Patungan beli kue bolu surprise buat Pak Hendra. Drama kuenya hampir mleyot gepeng di bagasi motor bendahara pas kena polisi tidur!', 'hariguru')">
+<div class="h-52 bg-gradient-to-tr from-teal-950 via-teal-900 to-ocean-800 flex flex-col items-center justify-center p-5 text-center text-white relative overflow-hidden group-hover:scale-102 transition-transform duration-300">
+<i class="ph ph-cake text-4xl mb-2 text-rose-300"></i>
+<span class="text-[10px] font-mono bg-teal-950/90 px-2 py-0.5 rounded text-teal-200 border border-teal-400/50 mb-1">Kue Hampir Gepeng</span>
+<h4 class="text-base font-bold">Surprise Kue Buat Pak Hendra</h4>
+<p class="text-xs text-teal-100 mt-1">Patungan uang kas demi senyum wali kelas</p>
+</div>
+<div class="p-3.5 bg-white/90 dark:bg-ocean-900/90 flex items-center justify-between border-t border-slate-100 dark:border-ocean-800">
+<div>
+<span class="text-[10px] font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider">Ruang Kelas 10 RPL</span>
+<p class="text-xs font-semibold text-slate-700 dark:text-slate-200">Hari Guru Nasional</p>
+</div>
+<span class="text-[11px] text-slate-400 font-mono">25 Nov 2024</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MODAL POPUP FOR GALLERY -->
+<div class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm transition-opacity duration-300" id="galleryModal">
+<div class="bg-white dark:bg-ocean-900 max-w-lg w-full rounded-2xl overflow-hidden shadow-2xl border border-ocean-200 dark:border-ocean-700 transform transition-all p-5 relative">
+<button aria-label="Tutup" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 dark:bg-ocean-800 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-ocean-700 transition" onclick="closeModal()">
+<i class="ph ph-x text-base"></i>
+</button>
+<div class="w-full h-40 rounded-xl bg-gradient-to-tr from-ocean-800 to-ocean-600 flex flex-col items-center justify-center text-white mb-3.5 p-4 text-center" id="modalVisualBox">
+<i class="ph ph-camera-rotate text-4xl mb-1 text-ocean-200"></i>
+<span class="text-xs font-mono text-ocean-200" id="modalTag">#DokumentasiAsli10RPL</span>
+</div>
+<h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white" id="modalTitle">Judul Kegiatan</h3>
+<p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed bg-slate-50 dark:bg-ocean-950/60 p-3 rounded-xl border border-slate-200/60 dark:border-ocean-800" id="modalDesc">
+          Deskripsi kegiatan yang dipilih.
+        </p>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-[11px] text-slate-400 font-mono">Foto tersimpan di arsip sekretaris</span>
+<button class="px-4 py-1.5 rounded-xl bg-ocean-600 hover:bg-ocean-700 text-white font-semibold text-xs transition" onclick="closeModal()">
+            Tutup Dialog
+          </button>
+</div>
+</div>
+</div>
+<!-- JADWAL MAPEL SECTION (With Humorous Notes) -->
+<section class="py-12 sm:py-16 bg-slate-100/60 dark:bg-ocean-950/40 relative" id="jadwal">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Header -->
+<div class="text-center max-w-2xl mx-auto mb-8">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ocean-100 dark:bg-ocean-900/80 text-ocean-700 dark:text-ocean-300 text-xs font-bold uppercase tracking-wider mb-2">
+<i class="ph ph-clock text-sm"></i>
+            Survival Timetable
+          </div>
+<h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Jadwal Mapel &amp; Peringatan Lab
+          </h2>
+<p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
+            Wajib disimak biar ga salah bawa buku paket berat-berat dan siap mental pas mapel kejuruan!
+          </p>
+</div>
+<!-- Filter Hari (Semua, Senin, Selasa, Rabu, Kamis, Jumat) -->
+<div class="flex items-center justify-center flex-wrap gap-1.5 mb-7">
+<button class="day-filter active px-3.5 py-1.5 rounded-xl text-xs font-bold bg-ocean-600 text-white shadow-md shadow-ocean-600/20 transition" data-day="all">
+            Semua Hari
+          </button>
+<button class="day-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-ocean-900/60 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-ocean-800 hover:border-ocean-400 transition" data-day="senin">
+            Senin
+          </button>
+<button class="day-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-ocean-900/60 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-ocean-800 hover:border-ocean-400 transition" data-day="selasa">
+            Selasa
+          </button>
+<button class="day-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-ocean-900/60 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-ocean-800 hover:border-ocean-400 transition" data-day="rabu">
+            Rabu
+          </button>
+<button class="day-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-ocean-900/60 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-ocean-800 hover:border-ocean-400 transition" data-day="kamis">
+            Kamis
+          </button>
+<button class="day-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-ocean-900/60 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-ocean-800 hover:border-ocean-400 transition" data-day="jumat">
+            Jumat
+          </button>
+</div>
+<!-- Schedule Cards Container -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="scheduleContainer">
+<!-- HARI SENIN -->
+<div class="day-card p-5 rounded-2xl glass-card border border-slate-200/80 dark:border-ocean-800/80" data-day="senin">
+<div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-200 dark:border-ocean-800">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-ocean-100 dark:bg-ocean-900 text-ocean-600 dark:text-ocean-400 flex items-center justify-center font-bold text-xs">
+                  1
+                </div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Senin</h3>
+</div>
+<span class="text-[11px] font-mono text-slate-500">07:00 - 15:00</span>
+</div>
+<ul class="space-y-2.5">
+<li class="p-2.5 rounded-xl bg-slate-50 dark:bg-ocean-900/40 border border-slate-200/60 dark:border-ocean-800/50 flex items-start justify-between">
+<div>
+<h4 class="text-xs font-bold text-slate-900 dark:text-white">Upacara &amp; Jam Wali Kelas</h4>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Topik: Dasi, razia kaos kaki &amp; kedisiplinan</p>
+</div>
+<span class="text-[10px] font-mono text-slate-500 shrink-0">07:00 - 08:30</span>
+</li>
+<!-- Produktif RPL -->
+<li class="p-3 rounded-xl bg-ocean-50/90 dark:bg-ocean-900/80 border-2 border-ocean-400/60 dark:border-ocean-500/60 relative overflow-hidden">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="px-2 py-0.5 rounded text-[9px] font-extrabold bg-ocean-600 text-white tracking-wide uppercase">
+                    PRODUKTIF KEJURUAN
+                  </span>
+<span class="text-[10px] font-mono font-bold text-ocean-700 dark:text-ocean-300">08:30 - 11:45</span>
+</div>
+<h4 class="text-xs sm:text-sm font-extrabold text-ocean-950 dark:text-white">Pemrograman Dasar (C++/Python)</h4>
+<p class="text-xs text-ocean-800 dark:text-ocean-200 mt-0.5">Pak Hendra, S.Kom (Lab 2)</p>
+<div class="mt-2 text-[11px] font-mono text-amber-700 dark:text-amber-300 bg-amber-100/70 dark:bg-amber-950/70 p-1.5 rounded-lg flex items-center gap-1.5">
+<i class="ph ph-warning text-xs shrink-0"></i>
+<span>Bawa flashdisk! Awas PC #12 tombol Enter-nya macet.</span>
+</div>
+</li>
+<li class="p-2.5 rounded-xl bg-slate-50 dark:bg-ocean-900/40 border border-slate-200/60 dark:border-ocean-800/50">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-xs font-bold text-slate-900 dark:text-white">Matematika Terapan</h4>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Bu Ratna, M.Pd</p>
+</div>
+<span class="text-[10px] font-mono text-slate-500 shrink-0">12:30 - 15:00</span>
+</div>
+<span class="inline-block mt-1 text-[10px] text-rose-500 italic">Sedia minyak angin dan kopi kantin biar gak tumbang.</span>
+</li>
+</ul>
+</div>
+<!-- HARI SELASA -->
+<div class="day-card p-5 rounded-2xl glass-card border border-slate-200/80 dark:border-ocean-800/80" data-day="selasa">
+<div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-200 dark:border-ocean-800">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-ocean-100 dark:bg-ocean-900 text-ocean-600 dark:text-ocean-400 flex items-center justify-center font-bold text-xs">
+                  2
+                </div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Selasa</h3>
+</div>
+<span class="text-[11px] font-mono text-slate-500">07:15 - 15:00</span>
+</div>
+<ul class="space-y-2.5">
+<!-- Produktif RPL -->
+<li class="p-3 rounded-xl bg-ocean-50/90 dark:bg-ocean-900/80 border-2 border-ocean-400/60 dark:border-ocean-500/60 relative overflow-hidden">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="px-2 py-0.5 rounded text-[9px] font-extrabold bg-ocean-600 text-white tracking-wide uppercase">
+                    PRODUKTIF KEJURUAN
+                  </span>
+<span class="text-[10px] font-mono font-bold text-ocean-700 dark:text-ocean-300">07:15 - 10:15</span>
+</div>
+<h4 class="text-xs sm:text-sm font-extrabold text-ocean-950 dark:text-white">Dasar Desain Grafis (UI/UX)</h4>
+<p class="text-xs text-ocean-800 dark:text-ocean-200 mt-0.5">Bu Sarah Artika, S.Ds (Lab 1)</p>
+<div class="mt-2 text-[11px] font-mono text-ocean-700 dark:text-ocean-300 bg-ocean-100/70 dark:bg-ocean-800/70 p-1.5 rounded-lg flex items-center gap-1.5">
+<i class="ph ph-info text-xs shrink-0"></i>
+<span>Buka Figma. Jangan comot template mentahan Canva!</span>
+</div>
+</li>
+<li class="p-2.5 rounded-xl bg-slate-50 dark:bg-ocean-900/40 border border-slate-200/60 dark:border-ocean-800/50 flex items-start justify-between">
+<div>
+<h4 class="text-xs font-bold text-slate-900 dark:text-white">Bahasa Inggris Komunikasi</h4>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Mr. David Wilson • Praktik conversation IT</p>
+</div>
+<span class="text-[10px] font-mono text-slate-500 shrink-0">10:30 - 12:00</span>
+</li>
+<li class="p-2.5 rounded-xl bg-slate-50 dark:bg-ocean-900/40 border border-slate-200/60 dark:border-ocean-800/50 flex items-start justify-between">
+<div>
+<h4 class="text-xs font-bold text-slate-900 dark:text-white">Fisika Terapan</h4>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Pak Bambang, M.Si • Rumus kelistrikan hardware</p>
+</div>
+<span class="text-[10px] font-mono text-slate-500 shrink-0">12:45 - 15:00</span>
+</li>
+</ul>
+</div>
+<!-- HARI RABU -->
+<div class="day-card p-5 rounded-2xl glass-card border border-slate-200/80 dark:border-ocean-800/80" data-day="rabu">
+<div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-200 dark:border-ocean-800">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-ocean-100 dark:bg-ocean-900 text-ocean-600 dark:text-ocean-400 flex items-center justify-center font-bold text-xs">
+                  3
+                </div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Rabu</h3>
+</div>
+<span class="text-[11px] font-mono text-slate-500">07:15 - 15:00</span>
+</div>
+<ul class="space-y-2.5">
+<!-- Produktif RPL -->
+<li class="p-3 rounded-xl bg-ocean-50/90 dark:bg-ocean-900/80 border-2 border-ocean-400/60 dark:border-ocean-500/60 relative overflow-hidden">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="px-2 py-0.5 rounded text-[9px] font-extrabold bg-ocean-600 text-white tracking-wide uppercase">
+                    PRODUKTIF KEJURUAN
+                  </span>
+<span class="text-[10px] font-mono font-bold text-ocean-700 dark:text-ocean-300">07:15 - 10:15</span>
+</div>
+<h4 class="text-xs sm:text-sm font-extrabold text-ocean-950 dark:text-white">Sistem Komputer &amp; Jaringan</h4>
+<p class="text-xs text-ocean-800 dark:text-ocean-200 mt-0.5">Pak Joko Susilo, S.T (Lab 3)</p>
+<div class="mt-2 text-[11px] font-mono text-teal-700 dark:text-teal-300 bg-teal-100/70 dark:bg-teal-950/70 p-1.5 rounded-lg flex items-center gap-1.5">
+<i class="ph ph-plugs-connected text-xs shrink-0"></i>
+<span>Crimping kabel LAN RJ-45, jangan salah urutan warna!</span>
+</div>
+</li>
+<li class="p-2.5 rounded-xl bg-slate-50 dark:bg-ocean-900/40 border border-slate-200/60 dark:border-ocean-800/50 flex items-start justify-between">
+<div>
+<h4 class="text-xs font-bold text-slate-900 dark:text-white">Bahasa Indonesia</h4>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Bu Sri Wahyuni, S.Pd</p>
+</div>
+<span class="text-[10px] font-mono text-slate-500 shrink-0">10:30 - 12:00</span>
+</li>
+<li class="p-2.5 rounded-xl bg-slate-50 dark:bg-ocean-900/40 border border-slate-200/60 dark:border-ocean-800/50">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-xs font-bold text-slate-900 dark:text-white">Pendidikan Jasmani (Olahraga)</h4>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Pak Antonius • Lapangan Utama</p>
+</div>
+<span class="text-[10px] font-mono text-slate-500 shrink-0">12:45 - 15:00</span>
+</div>
+<span class="inline-block mt-1 text-[10px] text-amber-600 dark:text-amber-400 font-semibold">Wajib bawa baju ganti! Jangan langsung masuk lab bau keringat.</span>
+</li>
+</ul>
+</div>
+<!-- HARI KAMIS -->
+<div class="day-card p-5 rounded-2xl glass-card border border-slate-200/80 dark:border-ocean-800/80" data-day="kamis">
+<div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-200 dark:border-ocean-800">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-ocean-100 dark:bg-ocean-900 text-ocean-600 dark:text-ocean-400 flex items-center justify-center font-bold text-xs">
+                  4
+                </div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Kamis</h3>
+</div>
+<span class="text-[11px] font-mono text-slate-500">07:15 - 15:00</span>
+</div>
+<ul class="space-y-2.5">
+<!-- Produktif RPL -->
+<li class="p-3 rounded-xl bg-ocean-50/90 dark:bg-ocean-900/80 border-2 border-ocean-400/60 dark:border-ocean-500/60 relative overflow-hidden">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="px-2 py-0.5 rounded text-[9px] font-extrabold bg-ocean-600 text-white tracking-wide uppercase">
+                    PRODUKTIF KEJURUAN
+                  </span>
+<span class="text-[10px] font-mono font-bold text-ocean-700 dark:text-ocean-300">07:15 - 10:15</span>
+</div>
+<h4 class="text-xs sm:text-sm font-extrabold text-ocean-950 dark:text-white">Basis Data (MySQL / SQL)</h4>
+<p class="text-xs text-ocean-800 dark:text-ocean-200 mt-0.5">Bu Anisa Rahma, S.Kom (Lab 2)</p>
+<div class="mt-2 text-[11px] font-mono text-purple-700 dark:text-purple-300 bg-purple-100/70 dark:bg-purple-950/70 p-1.5 rounded-lg flex items-center gap-1.5">
+<i class="ph ph-database text-xs shrink-0"></i>
+<span>Hati-hati pakai query DROP DATABASE, jangan ngelamun!</span>
+</div>
+</li>
+<li class="p-2.5 rounded-xl bg-slate-50 dark:bg-ocean-900/40 border border-slate-200/60 dark:border-ocean-800/50 flex items-start justify-between">
+<div>
+<h4 class="text-xs font-bold text-slate-900 dark:text-white">Pendidikan Agama &amp; Budi Pekerti</h4>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Ust. H. Syarifudin</p>
+</div>
+<span class="text-[10px] font-mono text-slate-500 shrink-0">10:30 - 12:00</span>
+</li>
+<li class="p-2.5 rounded-xl bg-slate-50 dark:bg-ocean-900/40 border border-slate-200/60 dark:border-ocean-800/50 flex items-start justify-between">
+<div>
+<h4 class="text-xs font-bold text-slate-900 dark:text-white">Sejarah Indonesia</h4>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Pak Dimas Pratama, S.Pd</p>
+</div>
+<span class="text-[10px] font-mono text-slate-500 shrink-0">12:45 - 15:00</span>
+</li>
+</ul>
+</div>
+<!-- HARI JUMAT -->
+<div class="day-card p-5 rounded-2xl glass-card border border-slate-200/80 dark:border-ocean-800/80" data-day="jumat">
+<div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-200 dark:border-ocean-800">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-ocean-100 dark:bg-ocean-900 text-ocean-600 dark:text-ocean-400 flex items-center justify-center font-bold text-xs">
+                  5
+                </div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Jumat</h3>
+</div>
+<span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-bold">Pulang Cepat (11:30)</span>
+</div>
+<ul class="space-y-2.5">
+<li class="p-2.5 rounded-xl bg-slate-50 dark:bg-ocean-900/40 border border-slate-200/60 dark:border-ocean-800/50 flex items-start justify-between">
+<div>
+<h4 class="text-xs font-bold text-slate-900 dark:text-white">Senam Pagi &amp; Literasi Digital</h4>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Halaman depan sekolah</p>
+</div>
+<span class="text-[10px] font-mono text-slate-500 shrink-0">07:15 - 08:30</span>
+</li>
+<li class="p-2.5 rounded-xl bg-slate-50 dark:bg-ocean-900/40 border border-slate-200/60 dark:border-ocean-800/50 flex items-start justify-between">
+<div>
+<h4 class="text-xs font-bold text-slate-900 dark:text-white">PPKn / Kewarganegaraan</h4>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Bu Melisa, S.Pd</p>
+</div>
+<span class="text-[10px] font-mono text-slate-500 shrink-0">08:45 - 10:00</span>
+</li>
+<li class="p-2.5 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 flex items-start justify-between">
+<div>
+<h4 class="text-xs font-bold text-emerald-900 dark:text-emerald-200">Operasi Bersih Lab &amp; Sholat Jumat</h4>
+<p class="text-[11px] text-emerald-700 dark:text-emerald-300 mt-0.5">Piket wajib rapikan mouse, headset &amp; matikan stop kontak</p>
+</div>
+<span class="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 shrink-0">10:00 - 11:30</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- PAPAN KOMENTAR & MENFESS (Spontan, Riil, + Emoji Reaction Quick Tags) -->
+<section class="py-12 sm:py-16 relative" id="komentar">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Header -->
+<div class="text-center max-w-xl mx-auto mb-8">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ocean-100 dark:bg-ocean-900/80 text-ocean-700 dark:text-ocean-300 text-xs font-bold uppercase tracking-wider mb-2">
+<i class="ph ph-chat-teardrop-dots text-sm"></i>
+            Menfess &amp; Curhat Box
+          </div>
+<h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Papan Komentar &amp; Menfess 10 RPL
+          </h2>
+<p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
+            Bebas kirim titipan salam, spill gebetan beda jurusan, atau curhat error koding. Anonim aman 100%!
+          </p>
+</div>
+<!-- Form Card -->
+<div class="p-5 sm:p-7 rounded-2xl glass-card border border-ocean-300/40 dark:border-ocean-700/50 shadow-xl mb-10">
+<form class="space-y-4" id="commentForm">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+<!-- Input Nama -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5" for="userName">
+                  Nama / Samaran <span class="text-slate-400 font-normal lowercase">(kosongin = anonim)</span>
+</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+<i class="ph ph-mask-happy text-base"></i>
+</span>
+<input class="w-full pl-9 pr-3.5 py-2.5 rounded-xl bg-white dark:bg-ocean-900/80 border border-slate-200 dark:border-ocean-700 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-ocean-500 transition" id="userName" placeholder="Misal: Si Pengagum Lab 2 / Kang Bakso" type="text"/>
+</div>
+</div>
+<!-- Pilih Kategori -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5" for="userCategory">
+                  Kategori
+                </label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+<i class="ph ph-tag text-base"></i>
+</span>
+<select class="w-full pl-9 pr-3.5 py-2.5 rounded-xl bg-white dark:bg-ocean-900/80 border border-slate-200 dark:border-ocean-700 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-ocean-500 transition appearance-none cursor-pointer" id="userCategory">
+<option value="Menfess">💌 Menfess Rahasia</option>
+<option value="Pesan">💬 Pesan &amp; Curhat Kelas</option>
+<option value="Kesan">⭐ Kesan / Motivasi Guru</option>
+</select>
+<span class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400">
+<i class="ph ph-caret-down text-sm"></i>
+</span>
+</div>
+</div>
+</div>
+<!-- Quick Emoji Tag Bar -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300" for="userMessage">
+                  Isi Pesan / Menfess <span class="text-rose-500">*</span>
+</label>
+<!-- Quick reactions -->
+<div class="flex items-center gap-1 text-xs">
+<span class="text-[10px] text-slate-400 mr-1 hidden sm:inline">Tambah Reaksi:</span>
+<button class="px-2 py-0.5 rounded bg-slate-100 dark:bg-ocean-800 hover:scale-110 transition" onclick="insertEmoji('💀')" type="button">💀</button>
+<button class="px-2 py-0.5 rounded bg-slate-100 dark:bg-ocean-800 hover:scale-110 transition" onclick="insertEmoji('🔥')" type="button">🔥</button>
+<button class="px-2 py-0.5 rounded bg-slate-100 dark:bg-ocean-800 hover:scale-110 transition" onclick="insertEmoji('💻')" type="button">💻</button>
+<button class="px-2 py-0.5 rounded bg-slate-100 dark:bg-ocean-800 hover:scale-110 transition" onclick="insertEmoji('☕')" type="button">☕</button>
+<button class="px-2 py-0.5 rounded bg-slate-100 dark:bg-ocean-800 hover:scale-110 transition" onclick="insertEmoji('😭')" type="button">😭</button>
+</div>
+</div>
+<textarea class="w-full p-3 rounded-xl bg-white dark:bg-ocean-900/80 border border-slate-200 dark:border-ocean-700 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-ocean-500 transition leading-relaxed" id="userMessage" placeholder="Tuliskan uneg-uneg, spill yang suka minjem tipex gak balikin, atau salam buat seisi kelas di sini..." required="" rows="3"></textarea>
+</div>
+<!-- Submit Button & Feedback -->
+<div class="flex items-center justify-between pt-1">
+<span class="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1.5 font-mono">
+<i class="ph ph-database text-ocean-500"></i> Disimpan di LocalStorage browser
+              </span>
+<button class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-ocean-600 to-ocean-500 hover:from-ocean-700 hover:to-ocean-600 shadow-md shadow-ocean-500/25 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5" type="submit">
+<i class="ph ph-paper-plane-tilt text-base"></i>
+<span>Tancap Kirim!</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Real-time Comments List -->
+<div class="space-y-3.5">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<i class="ph ph-chats text-ocean-500 text-lg"></i>
+              Feed Menfess Terkini (<span id="commentCount">0</span>)
+            </h3>
+<button class="text-xs text-slate-400 hover:text-rose-500 transition flex items-center gap-1" id="clearCommentsBtn" title="Kembalikan komentar bawaan">
+<i class="ph ph-arrow-counter-clockwise"></i> Reset Default
+            </button>
+</div>
+<div class="space-y-3" id="commentsContainer">
+<!-- Komentar akan dimuat secara dinamis via JS -->
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="mt-12 border-t border-slate-200 dark:border-ocean-900/80 bg-white/70 dark:bg-ocean-deep/90 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="flex flex-col md:flex-row items-center justify-between gap-5">
+<!-- Left: Brand & Tagline -->
+<div class="flex flex-col items-center md:items-start text-center md:text-left">
+<div class="flex items-center gap-2 mb-1">
+<div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-ocean-600 to-ocean-400 flex items-center justify-center text-white text-sm">
+<i class="ph ph-code"></i>
+</div>
+<span class="text-base font-black tracking-tight text-slate-900 dark:text-white">
+              Kelas 10 RPL • Software Engineering
+            </span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 max-w-sm">
+            Pantang pulang sebelum titik koma ketemu. Bukan calon programmer kaleng-kaleng!
+          </p>
+</div>
+<!-- Center / Social Links -->
+<div class="flex items-center gap-2.5">
+<a aria-label="Instagram Kelas" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-ocean-900 text-slate-600 dark:text-ocean-300 hover:text-white hover:bg-gradient-to-tr hover:from-amber-500 hover:to-purple-600 flex items-center justify-center text-lg transition shadow-sm" href="#" title="Instagram Kelas">
+<i class="ph ph-instagram-logo"></i>
+</a>
+<a aria-label="TikTok Kelas" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-ocean-900 text-slate-600 dark:text-ocean-300 hover:text-white hover:bg-black flex items-center justify-center text-lg transition shadow-sm" href="#" title="TikTok Kelas">
+<i class="ph ph-tiktok-logo"></i>
+</a>
+<a aria-label="GitHub Kelas" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-ocean-900 text-slate-600 dark:text-ocean-300 hover:text-white hover:bg-ocean-700 flex items-center justify-center text-lg transition shadow-sm" href="#" title="GitHub Repositori">
+<i class="ph ph-github-logo"></i>
+</a>
+</div>
+<!-- Right: Copyright -->
+<div class="text-center md:text-right">
+<p class="text-xs font-mono text-slate-500 dark:text-slate-400">
+            Dibuat sambil ngemil basreng &amp; diselingi error syntax • <span class="font-bold text-ocean-600 dark:text-ocean-400">10 RPL 2025</span>
+</p>
+<p class="text-[11px] text-slate-400 mt-0.5">
+            Keep debugging and stay santai!
+          </p>
+</div>
+</div>
+</div>
+</footer>
+<!-- SCRIPT LOGIC (DarkMode, Interactive CLI, Filter, LocalStorage, Modal) -->
+<script>
+    // 1. Dark Mode Toggle with localStorage
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        themeIcon.classList.replace('ph-moon', 'ph-sun');
+        localStorage.setItem('theme_mode', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        themeIcon.classList.replace('ph-sun', 'ph-moon');
+        localStorage.setItem('theme_mode', 'light');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme_mode');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      applyTheme(true);
+    } else {
+      applyTheme(false);
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      applyTheme(!isDark);
+    });
+
+    // 2. Mobile Hamburger Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isExpanded = !mobileMenu.classList.contains('hidden');
+      if (isExpanded) {
+        mobileMenu.classList.add('hidden');
+        mobileMenuIcon.classList.replace('ph-x', 'ph-list');
+      } else {
+        mobileMenu.classList.remove('hidden');
+        mobileMenuIcon.classList.replace('ph-list', 'ph-x');
+      }
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenuIcon.classList.replace('ph-x', 'ph-list');
+      });
+    });
+
+    // 3. Mini Interactive Terminal CLI
+    const terminalScreen = document.getElementById('terminalScreen');
+    const cliDynamicLogs = document.getElementById('cliDynamicLogs');
+    const terminalCurrentInput = document.getElementById('terminalCurrentInput');
+
+    const cliResponses = {
+      'npm run curhat': `[CURHAT 10 RPL]: "Pak, tolong deadline tugas C++ jangan hari senin ya... kita butuh refreshing otak bukan refresh compiler!" (Status: 36 Murid Mengaminkan)`,
+      'cat rules.txt': `RULES RESMI LAB 2:\n1. Dilarang copot kabel mouse tetangga.\n2. Siapa yang nyalain YouTube 4K auto disita hotspot-nya.\n3. Jangan lupa SAVE biar gak nangis pas mati lampu.`,
+      'ping lab_pc3': `PING lab_pc3 (192.168.1.13): 56 data bytes\n64 bytes from 192.168.1.13: icmp_seq=0 ttl=64 time=1.24 ms\n64 bytes from 192.168.1.13: icmp_seq=1 ttl=64 time=2.01 ms\n--- Status: PC 3 Masih Hidup tapi Kipasnya Berisik Banget ---`,
+      'clear': 'CLEAR_SIGNAL'
+    };
+
+    function runCommand(cmd) {
+      terminalCurrentInput.textContent = cmd;
+
+      if (cmd === 'clear') {
+        cliDynamicLogs.innerHTML = '';
+        terminalScreen.scrollTop = 0;
+        return;
+      }
+
+      const logBlock = document.createElement('div');
+      logBlock.className = 'mt-2 pt-1 border-t border-slate-800 text-[11px] leading-relaxed';
+      
+      const responseText = cliResponses[cmd] || `Perintah tidak dikenal: "${cmd}". Coba klik tombol di bawah!`;
+      
+      logBlock.innerHTML = `
+        <div class="text-emerald-400">guest@10rpl:<span class="text-ocean-400">~</span>$ <span class="text-amber-300 font-bold">${cmd}</span></div>
+        <div class="text-slate-300 mt-1 whitespace-pre-line pl-2 border-l border-ocean-600/70 font-mono">${responseText}</div>
+      `;
+
+      cliDynamicLogs.appendChild(logBlock);
+      terminalScreen.scrollTop = terminalScreen.scrollHeight;
+    }
+
+    // 4. Gallery Category Filter
+    const filterButtons = document.querySelectorAll('#galleryFilterButtons .filter-btn');
+    const galleryItems = document.querySelectorAll('#galleryGrid .gallery-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('active', 'bg-ocean-600', 'text-white');
+          b.classList.add('bg-white', 'dark:bg-ocean-900/60', 'text-slate-700', 'dark:text-slate-200');
+        });
+        btn.classList.add('active', 'bg-ocean-600', 'text-white');
+        btn.classList.remove('bg-white', 'dark:bg-ocean-900/60', 'text-slate-700', 'dark:text-slate-200');
+
+        const filter = btn.getAttribute('data-filter');
+        galleryItems.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 5. Modal Popup Gallery
+    const galleryModal = document.getElementById('galleryModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalTag = document.getElementById('modalTag');
+
+    function openModal(title, desc, themeKey) {
+      modalTitle.textContent = title;
+      modalDesc.textContent = desc;
+      modalTag.textContent = `#CeritaNyata10RPL`;
+      galleryModal.classList.remove('hidden');
+      galleryModal.classList.add('flex');
+    }
+
+    function closeModal() {
+      galleryModal.classList.add('hidden');
+      galleryModal.classList.remove('flex');
+    }
+
+    galleryModal.addEventListener('click', (e) => {
+      if (e.target === galleryModal) closeModal();
+    });
+
+    // 6. Schedule Day Filter
+    const dayFilters = document.querySelectorAll('.day-filter');
+    const dayCards = document.querySelectorAll('.day-card');
+
+    dayFilters.forEach(btn => {
+      btn.addEventListener('click', () => {
+        dayFilters.forEach(b => {
+          b.classList.remove('active', 'bg-ocean-600', 'text-white', 'shadow-md');
+          b.classList.add('bg-white', 'dark:bg-ocean-900/60', 'text-slate-700', 'dark:text-slate-200');
+        });
+        btn.classList.add('active', 'bg-ocean-600', 'text-white', 'shadow-md');
+        btn.classList.remove('bg-white', 'dark:bg-ocean-900/60', 'text-slate-700', 'dark:text-slate-200');
+
+        const selectedDay = btn.getAttribute('data-day');
+        dayCards.forEach(card => {
+          if (selectedDay === 'all' || card.getAttribute('data-day') === selectedDay) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 7. Emoji insertion into textarea
+    function insertEmoji(emoji) {
+      const textarea = document.getElementById('userMessage');
+      textarea.value += ' ' + emoji + ' ';
+      textarea.focus();
+    }
+
+    // 8. Guestbook / Menfess with LocalStorage
+    const commentForm = document.getElementById('commentForm');
+    const userNameInput = document.getElementById('userName');
+    const userCategoryInput = document.getElementById('userCategory');
+    const userMessageInput = document.getElementById('userMessage');
+    const commentsContainer = document.getElementById('commentsContainer');
+    const commentCount = document.getElementById('commentCount');
+    const clearCommentsBtn = document.getElementById('clearCommentsBtn');
+
+    // Default Seed Comments (Real, Funny & SMK Authentic)
+    const defaultComments = [
+      {
+        name: "Anonim Gemas",
+        category: "Menfess",
+        message: "Spill anak cewek RPL yang tadi minjemin pulpen pilot di lab 1 dong, mau balikin tapi gatau namanya 😭🙈",
+        time: "Hari ini, 10:14"
+      },
+      {
+        name: "Rizky (Siswa bangku belakang)",
+        category: "Pesan",
+        message: "Woy yang bawa kabel casan Type C ketinggalan di meja PC 7 lab 2, gua amanin di loker ya jangan panik! 🔥",
+        time: "Hari ini, 09:30"
+      },
+      {
+        name: "Devin (Alumni RPL 23)",
+        category: "Pesan",
+        message: "Jangan remehin basis data dek, pas magang beneran kepake banget query SELECT WHERE sama relasi tabelnya wkwk semangat! 💻",
+        time: "Kemarin, 21:05"
+      },
+      {
+        name: "Bu Sarah (Guru DDG)",
+        category: "Kesan",
+        message: "Tugas poster vector jangan copas template mentahan Canva ya anak-anak, saya hafal asetnya! Semangat revisinya! ⭐",
+        time: "Kemarin, 14:20"
+      }
+    ];
+
+    function getComments() {
+      const stored = localStorage.getItem('rpl10_comments_v2');
+      if (stored) {
+        try {
+          return JSON.parse(stored);
+        } catch(e) {
+          return defaultComments;
+        }
+      }
+      return defaultComments;
+    }
+
+    function saveComments(comments) {
+      localStorage.setItem('rpl10_comments_v2', JSON.stringify(comments));
+    }
+
+    function getCategoryBadge(cat) {
+      switch (cat) {
+        case 'Menfess':
+          return `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-100 text-pink-700 dark:bg-pink-950/80 dark:text-pink-300 shrink-0">💌 Menfess</span>`;
+        case 'Kesan':
+          return `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-700 dark:bg-amber-950/80 dark:text-amber-300 shrink-0">⭐ Kesan</span>`;
+        default:
+          return `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-ocean-100 text-ocean-700 dark:bg-ocean-900/80 dark:text-ocean-300 shrink-0">💬 Pesan</span>`;
+      }
+    }
+
+    function renderComments() {
+      const comments = getComments();
+      commentCount.textContent = comments.length;
+      commentsContainer.innerHTML = '';
+
+      if (comments.length === 0) {
+        commentsContainer.innerHTML = `
+          <div class="text-center py-8 glass-card rounded-2xl">
+            <i class="ph ph-chat-teardrop text-3xl text-slate-400 mb-1"></i>
+            <p class="text-xs text-slate-500">Papan menfess masih kosong. Kirim uneg-unegmu sekarang!</p>
+          </div>
+        `;
+        return;
+      }
+
+      comments.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = "p-3.5 sm:p-4 rounded-xl glass-card border border-slate-200/80 dark:border-ocean-800/80 transition hover:border-ocean-400";
+        card.innerHTML = `
+          <div class="flex items-center justify-between gap-2 mb-1.5">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-ocean-600 to-ocean-400 text-white font-bold text-xs flex items-center justify-center shrink-0">
+                ${item.name.charAt(0).toUpperCase()}
+              </div>
+              <span class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white truncate">${item.name}</span>
+              ${getCategoryBadge(item.category)}
+            </div>
+            <span class="text-[10px] font-mono text-slate-400 shrink-0">${item.time}</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-200 pl-9 leading-relaxed">${item.message}</p>
+        `;
+        commentsContainer.appendChild(card);
+      });
+    }
+
+    commentForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = userNameInput.value.trim() || 'Anonim 10 RPL';
+      const category = userCategoryInput.value;
+      const message = userMessageInput.value.trim();
+
+      if (!message) return;
+
+      const now = new Date();
+      const timeStr = `Hari ini, ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
+      const comments = getComments();
+      comments.unshift({
+        name,
+        category,
+        message,
+        time: timeStr
+      });
+
+      saveComments(comments);
+      renderComments();
+
+      // Reset form input
+      userNameInput.value = '';
+      userMessageInput.value = '';
+
+      // Feedback highlight on new card
+      const firstCard = commentsContainer.firstElementChild;
+      if (firstCard) {
+        firstCard.classList.add('ring-2', 'ring-ocean-500');
+        setTimeout(() => firstCard.classList.remove('ring-2', 'ring-ocean-500'), 1500);
+      }
+    });
+
+    clearCommentsBtn.addEventListener('click', () => {
+      if (confirm('Kembalikan papan komentar ke pesan awal?')) {
+        saveComments(defaultComments);
+        renderComments();
+      }
+    });
+
+    // Initial render
+    renderComments();
+  </script>
+</body></html>

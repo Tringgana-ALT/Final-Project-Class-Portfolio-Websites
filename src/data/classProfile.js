@@ -7,9 +7,8 @@ export const classMeta = {
   badge: 'KELAS X • REKAYASA PERANGKAT LUNAK',
   titlePrefix: 'Selamat Datang di',
   titleHighlight: 'Kelas 10 RPL',
-  subtitle:
-    'Satu kelas, banyak ide. Kami belajar merancang, membuat, dan merawat perangkat lunak—sambil saling mendukung di setiap prosesnya.',
-  statusBanner: 'RUANG KOLABORASI: Belajar, berkarya, dan bertumbuh bersama.',
+  subtitle: 'Belajar bikin software, nyari bug, dan ngerjain proyek bareng.',
+  statusBanner: 'CATATAN KELAS: Kalau kode error, cek bareng dulu.',
   statusReady: 'Siap belajar',
   studentCount: 36,
   productiveSubjectsCount: 4,
@@ -18,15 +17,15 @@ export const classMeta = {
   values: [
     {
       label: 'Kompak',
-      text: 'Bertukar ide dan saling bantu saat belajar.',
+      text: 'Kalau mentok, tanya teman sebelah.',
     },
     {
       label: 'Kreatif',
-      text: 'Mengubah rasa ingin tahu menjadi karya digital.',
+      text: 'Coba cara lain kalau yang pertama gagal.',
     },
     {
       label: 'Bertumbuh',
-      text: 'Berani mencoba, memperbaiki, dan belajar lagi.',
+      text: 'Bug ketemu, buka lagi kodenya.',
     },
   ],
   socials: [
@@ -56,16 +55,17 @@ export const classMeta = {
 
 export const leadership = {
   advisor: {
-    badge: 'Pawang Utama & Penasihat',
+    badge: 'Wali Kelas',
     name: 'Nama Wali Kelas',
     role: 'Wali Kelas 10 RPL',
-    bio: 'Mendampingi proses belajar dan perkembangan siswa kelas 10 RPL.',
+    bio: 'Tanya wali kelas kalau ada urusan kelas.',
   },
   core: [
     {
       role: 'Ketua Kelas',
       name: 'Nama Ketua Kelas',
-      description: 'Mengkoordinasikan kegiatan kelas dan menjadi penghubung dengan guru.',
+      tier: 1,
+      description: 'Atur agenda kelas dan kabari guru.',
       iconClass: 'ph ph-crown',
       badgeClass: 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300',
       iconBoxClass: 'bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400',
@@ -73,7 +73,8 @@ export const leadership = {
     {
       role: 'Wakil Ketua',
       name: 'Nama Wakil Ketua',
-      description: 'Membantu ketua dan menjaga koordinasi antaranggota kelas.',
+      tier: 1,
+      description: 'Bantu ketua kalau lagi sibuk.',
       iconClass: 'ph ph-shield-star',
       badgeClass: 'bg-ocean-100 text-ocean-800 dark:bg-ocean-900 dark:text-ocean-300',
       iconBoxClass: 'bg-ocean-100 dark:bg-ocean-900/90 text-ocean-600 dark:text-ocean-300',
@@ -81,7 +82,8 @@ export const leadership = {
     {
       role: 'Sekretaris',
       name: 'Nama Sekretaris',
-      description: 'Mencatat informasi kelas dan membantu mengelola administrasi.',
+      tier: 2,
+      description: 'Catat info yang jangan sampai kelewat.',
       iconClass: 'ph ph-notepad',
       badgeClass: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300',
       iconBoxClass: 'bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-300',
@@ -89,7 +91,8 @@ export const leadership = {
     {
       role: 'Bendahara',
       name: 'Nama Bendahara',
-      description: 'Mencatat dan melaporkan pengelolaan kas kelas secara terbuka.',
+      tier: 2,
+      description: 'Catat kas dan pengeluarannya.',
       iconClass: 'ph ph-coins',
       badgeClass: 'bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-300',
       iconBoxClass: 'bg-purple-100 dark:bg-purple-950/80 text-purple-600 dark:text-purple-300',
@@ -99,7 +102,7 @@ export const leadership = {
     {
       role: 'Koordinator Peralatan / Lab',
       name: 'Nama Koordinator',
-      description: 'Membantu menjaga inventaris dan kesiapan peralatan kelas.',
+      description: 'Cek alat sebelum dipakai.',
       iconClass: 'ph ph-plugs',
       roleClass: 'text-ocean-600 dark:text-ocean-400',
       iconBoxClass: 'bg-ocean-100 dark:bg-ocean-950/70 text-ocean-600 dark:text-ocean-400',
@@ -107,7 +110,7 @@ export const leadership = {
     {
       role: 'Koordinator Keamanan',
       name: 'Nama Koordinator',
-      description: 'Membantu menjaga ketertiban dan kenyamanan kelas.',
+      description: 'Bantu jaga kelas tetap tertib.',
       iconClass: 'ph ph-warning-circle',
       roleClass: 'text-rose-600 dark:text-rose-400',
       iconBoxClass: 'bg-rose-100 dark:bg-rose-950/70 text-rose-600 dark:text-rose-300',
@@ -115,7 +118,7 @@ export const leadership = {
     {
       role: 'Koordinator Kebersihan',
       name: 'Nama Koordinator',
-      description: 'Mengoordinasikan jadwal piket dan kebersihan ruang kelas.',
+      description: 'Atur jadwal piket biar nggak lupa.',
       iconClass: 'ph ph-broom',
       roleClass: 'text-teal-600 dark:text-teal-400',
       iconBoxClass: 'bg-teal-100 dark:bg-teal-950/70 text-teal-600 dark:text-teal-300',
@@ -249,7 +252,7 @@ export const scheduleDays = [
       },
       {
         name: 'Matematika Terapan',
-        teacher: 'Bu Ratna, M.Pd',
+        teacher: 'Nama Guru',
         time: '12:30 - 15:00',
         isProductive: false,
         badgeText: '',
@@ -281,7 +284,7 @@ export const scheduleDays = [
       },
       {
         name: 'Bahasa Inggris Komunikasi',
-        teacher: 'Mr. David Wilson • Praktik conversation IT',
+        teacher: 'Nama Guru • Praktik conversation IT',
         time: '10:30 - 12:00',
         isProductive: false,
         badgeText: '',
@@ -367,7 +370,7 @@ export const scheduleDays = [
       },
       {
         name: 'Pendidikan Agama & Budi Pekerti',
-        teacher: 'Ust. H. Syarifudin',
+        teacher: 'Nama Guru',
         time: '10:30 - 12:00',
         isProductive: false,
         badgeText: '',
@@ -378,7 +381,7 @@ export const scheduleDays = [
       },
       {
         name: 'Sejarah Indonesia',
-        teacher: 'Pak Dimas Pratama, S.Pd',
+        teacher: 'Nama Guru',
         time: '12:45 - 15:00',
         isProductive: false,
         badgeText: '',

@@ -197,6 +197,7 @@ function validateLeadership() {
       ['role', 'name', 'description', 'iconClass', 'badgeClass', 'iconBoxClass'].forEach((field) =>
         assertNonEmptyString(member, field, mCtx),
       );
+      assertPositiveInt(member, 'tier', mCtx);
     });
   }
 

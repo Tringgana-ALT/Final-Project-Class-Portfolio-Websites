@@ -228,21 +228,23 @@
 <div class="text-center max-w-2xl mx-auto mb-10">
 <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ocean-100 dark:bg-ocean-900/80 text-ocean-700 dark:text-ocean-300 text-xs font-bold uppercase tracking-wider mb-2">
 <i class="ph ph-crown text-sm" aria-hidden="true"></i>
-            Aparatur &amp; Pawang Kelas
+            Pengurus Kelas
           </div>
 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Struktur Organisasi Kelas 10 RPL
           </h2>
 <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2">
-            Kenali teman-teman yang membantu kegiatan kelas berjalan dengan baik. Data dikelola terpusat di profil kelas.
+            Wali kelas, pengurus inti, dan koordinator kelas.
           </p>
 </div>
 <!-- 1. Wali Kelas (Top Tier Highlight) -->
-<div class="max-w-md mx-auto mb-8" id="strukturAdvisorContainer"></div>
-<!-- 2. Core Leadership (Ketua, Wakil, Sekretaris, Bendahara) -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6" id="strukturCoreGrid"></div>
-<!-- 3. Koordinator Seksi (Peralatan, Keamanan, Kebersihan) -->
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="strukturCoordinatorGrid"></div>
+<div class="reference-board org-chart">
+<div id="strukturAdvisorContainer"></div>
+<div class="org-chart__connector" aria-hidden="true"></div>
+<div id="strukturCoreGrid"></div>
+<div class="org-chart__connector" aria-hidden="true"></div>
+<div id="strukturCoordinatorGrid"></div>
+</div>
 </div>
 </section>
 <!-- GALERI KEGIATAN SECTION -->
@@ -289,38 +291,40 @@
 <div class="text-center max-w-2xl mx-auto mb-8">
 <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ocean-100 dark:bg-ocean-900/80 text-ocean-700 dark:text-ocean-300 text-xs font-bold uppercase tracking-wider mb-2">
 <i class="ph ph-clock text-sm" aria-hidden="true"></i>
-            Survival Timetable
+            Jadwal Kelas
           </div>
 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Jadwal Mapel &amp; Peringatan Lab
+            Jadwal Mapel
           </h2>
 <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
-            Contoh susunan mata pelajaran—sesuaikan hari dan waktunya dengan jadwal resmi kelas.
+            Contoh jadwal; sesuaikan dengan jadwal resmi kelas.
           </p>
 </div>
+<div class="reference-board schedule-board">
 <!-- Filter Hari (Semua, Senin, Selasa, Rabu, Kamis, Jumat) -->
-<div class="flex items-center justify-center flex-wrap gap-1.5 mb-7">
-<button type="button" class="day-filter active px-3.5 py-1.5 rounded-xl text-xs font-bold bg-ocean-600 text-white shadow-md shadow-ocean-600/20 transition" data-day="all" aria-pressed="true">
+<div class="schedule-filters" role="group" aria-label="Filter jadwal berdasarkan hari">
+<button type="button" class="day-filter active" data-day="all" aria-pressed="true">
             Semua Hari
           </button>
-<button type="button" class="day-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-ocean-900/60 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-ocean-800 hover:border-ocean-400 transition" data-day="senin" aria-pressed="false">
+<button type="button" class="day-filter" data-day="senin" aria-pressed="false">
             Senin
           </button>
-<button type="button" class="day-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-ocean-900/60 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-ocean-800 hover:border-ocean-400 transition" data-day="selasa" aria-pressed="false">
+<button type="button" class="day-filter" data-day="selasa" aria-pressed="false">
             Selasa
           </button>
-<button type="button" class="day-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-ocean-900/60 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-ocean-800 hover:border-ocean-400 transition" data-day="rabu" aria-pressed="false">
+<button type="button" class="day-filter" data-day="rabu" aria-pressed="false">
             Rabu
           </button>
-<button type="button" class="day-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-ocean-900/60 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-ocean-800 hover:border-ocean-400 transition" data-day="kamis" aria-pressed="false">
+<button type="button" class="day-filter" data-day="kamis" aria-pressed="false">
             Kamis
           </button>
-<button type="button" class="day-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-ocean-900/60 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-ocean-800 hover:border-ocean-400 transition" data-day="jumat" aria-pressed="false">
+<button type="button" class="day-filter" data-day="jumat" aria-pressed="false">
             Jumat
           </button>
 </div>
 <!-- Schedule Cards Container -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="scheduleContainer"></div>
+<div id="scheduleContainer"></div>
+</div>
 </div>
 </section>
 <!-- PAPAN KOMENTAR & MENFESS (Spontan, Riil, + Emoji Reaction Quick Tags) -->

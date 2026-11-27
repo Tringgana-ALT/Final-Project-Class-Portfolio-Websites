@@ -86,3 +86,270 @@
     .dark dialog::backdrop {
       background: rgba(2, 10, 20, 0.86);
     }
+
+    .reference-board {
+      color: #f8fafc;
+      background: linear-gradient(112deg, #1b1b1b 12%, #321632 68%, #50174b 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.25rem;
+      box-shadow: 0 20px 50px rgba(20, 8, 24, 0.18);
+    }
+
+    .org-chart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+      padding: 2rem 1rem 2.5rem;
+    }
+
+    #strukturAdvisorContainer,
+    #strukturCoreGrid,
+    #strukturCoordinatorGrid {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .org-chart__connector {
+      width: 1px;
+      height: 28px;
+      flex: 0 0 28px;
+      background: rgba(255, 255, 255, 0.56);
+    }
+
+    .org-chart__tier {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1.75rem;
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding-top: 24px;
+    }
+
+    .org-chart__tier::before {
+      position: absolute;
+      top: 0;
+      right: 12%;
+      left: 12%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.56);
+      content: '';
+    }
+
+    .org-chart__node {
+      position: relative;
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-align: center;
+    }
+
+    .org-chart__node::before {
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      width: 1px;
+      height: 13px;
+      background: rgba(255, 255, 255, 0.56);
+      content: '';
+    }
+
+    .org-chart__node::after {
+      position: absolute;
+      top: -13px;
+      left: calc(50% - 3px);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      content: '';
+    }
+
+    #strukturAdvisorContainer .org-chart__node::before,
+    #strukturAdvisorContainer .org-chart__node::after {
+      display: none;
+    }
+
+    .org-chart__role {
+      max-width: 100%;
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 0.75rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .org-chart__name {
+      display: inline-flex;
+      min-width: 120px;
+      min-height: 28px;
+      align-items: center;
+      justify-content: center;
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      background: #fff;
+      color: #1b1b1b;
+      font-size: 0.7rem;
+      font-weight: 700;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+
+    .schedule-board {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding: 1rem clamp(1rem, 5vw, 2.5rem) 2rem;
+    }
+
+    .schedule-filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.25rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .schedule-filters .day-filter {
+      position: relative;
+      padding: 0.75rem 0.85rem;
+      border: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.62);
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      transition: color 160ms ease;
+    }
+
+    .schedule-filters .day-filter:hover,
+    .schedule-filters .day-filter:focus-visible,
+    .schedule-filters .day-filter.active {
+      color: #fff;
+    }
+
+    .schedule-filters .day-filter.active::after {
+      position: absolute;
+      right: 0.65rem;
+      bottom: -1px;
+      left: 0.65rem;
+      height: 2px;
+      background: #fff;
+      content: '';
+    }
+
+    .schedule-day-card {
+      width: min(100%, 520px);
+      margin: 0 auto 2rem;
+    }
+
+    .schedule-day-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .schedule-day-card:not(:last-child) {
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .schedule-day-card__header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0 1rem;
+      text-align: center;
+    }
+
+    .schedule-day-card__title {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .schedule-day-card__hours {
+      color: rgba(255, 255, 255, 0.65);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.65rem;
+    }
+
+    .schedule-table {
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+    }
+
+    .schedule-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.65rem 0.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.56);
+    }
+
+    .schedule-row__info {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .schedule-row__name {
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 0.76rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .schedule-row__detail {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.64rem;
+      line-height: 1.4;
+    }
+
+    .schedule-row__time {
+      color: rgba(255, 255, 255, 0.84);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.63rem;
+      white-space: nowrap;
+    }
+
+    .schedule-row--activity .schedule-row__name {
+      color: #fff;
+    }
+
+    @media (max-width: 520px) {
+      .org-chart {
+        padding: 1.75rem 0.75rem 2rem;
+      }
+
+      .org-chart__tier {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 1.25rem 0.5rem;
+      }
+
+      .org-chart__name {
+        min-width: 105px;
+        padding-inline: 0.55rem;
+      }
+
+      .schedule-filters {
+        gap: 0;
+      }
+
+      .schedule-filters .day-filter {
+        padding: 0.7rem 0.55rem;
+        font-size: 0.72rem;
+      }
+
+      .schedule-row {
+        gap: 0.5rem;
+        padding-inline: 0.25rem;
+      }
+    }

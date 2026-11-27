@@ -208,14 +208,10 @@ export function initializeInteractions() {
   dayFilters.forEach(button => {
     button.addEventListener('click', () => {
       dayFilters.forEach(filterButton => {
-        filterButton.classList.remove('active', 'bg-ocean-600', 'text-white', 'shadow-md');
-        filterButton.classList.add('bg-white', 'dark:bg-ocean-900/60', 'text-slate-700', 'dark:text-slate-200');
-        filterButton.setAttribute('aria-pressed', 'false');
+        const isActive = filterButton === button;
+        filterButton.classList.toggle('active', isActive);
+        filterButton.setAttribute('aria-pressed', String(isActive));
       });
-
-      button.classList.add('active', 'bg-ocean-600', 'text-white', 'shadow-md');
-      button.classList.remove('bg-white', 'dark:bg-ocean-900/60', 'text-slate-700', 'dark:text-slate-200');
-      button.setAttribute('aria-pressed', 'true');
 
       dayCards.forEach(card => {
         card.style.display = button.dataset.day === 'all' || card.dataset.day === button.dataset.day
