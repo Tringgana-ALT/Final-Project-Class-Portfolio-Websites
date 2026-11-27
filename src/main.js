@@ -1,8 +1,10 @@
 import './styles.css';
+import { renderLandingContent } from './renderLanding.js';
+import { initializeInteractions } from './interactions.js';
 import { initializeComments } from './comments.js';
 import { createCommentsReference } from './firebase.js';
-import { initializeInteractions } from './interactions.js';
 
+renderLandingContent();
 initializeInteractions();
 
 try {

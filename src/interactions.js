@@ -118,29 +118,66 @@ export function initializeInteractions() {
   const modalTitle = document.getElementById('modalTitle');
   const modalDesc = document.getElementById('modalDesc');
   const modalTag = document.getElementById('modalTag');
+  const modalImage = document.getElementById('modalImage');
+  const modalImageOverlay = document.getElementById('modalImageOverlay');
   const closeGalleryModal = document.getElementById('closeGalleryModal');
+  const closeGalleryModalAction = document.getElementById('closeGalleryModalAction');
   let activeGalleryTrigger = null;
 
-  function openModal(title, description) {
+  function restoreGalleryFocus() {
+    if (activeGalleryTrigger && typeof activeGalleryTrigger.focus === 'function') {
+      activeGalleryTrigger.focus();
+    }
+    activeGalleryTrigger = null;
+  }
+
+  function openModal(item) {
     activeGalleryTrigger = document.activeElement;
-    modalTitle.textContent = title;
-    modalDesc.textContent = description;
-    modalTag.textContent = 'ILUSTRASI KEGIATAN';
-    galleryModal.classList.remove('hidden');
-    galleryModal.classList.add('flex');
+    modalTitle.textContent = item.dataset.title || '';
+    modalDesc.textContent = item.dataset.description || '';
+    modalTag.textContent = item.dataset.tag || 'ILUSTRASI KEGIATAN';
+
+    if (modalImage && modalImageOverlay) {
+      const imageSrc = item.dataset.image || '';
+      if (imageSrc) {
+        modalImage.src = imageSrc;
+        modalImage.alt = item.dataset.alt || item.dataset.title || '';
+        modalImage.classList.remove('hidden');
+        modalImageOverlay.classList.remove('hidden');
+      } else {
+        modalImage.removeAttribute('src');
+        modalImage.alt = '';
+        modalImage.classList.add('hidden');
+        modalImageOverlay.classList.add('hidden');
+      }
+    }
+
+    if (typeof galleryModal.showModal === 'function') {
+      if (!galleryModal.open) galleryModal.showModal();
+    } else {
+      galleryModal.setAttribute('open', '');
+    }
     closeGalleryModal.focus();
   }
 
   function closeModal() {
-    galleryModal.classList.add('hidden');
-    galleryModal.classList.remove('flex');
-    if (activeGalleryTrigger && typeof activeGalleryTrigger.focus === 'function') {
-      activeGalleryTrigger.focus();
+    if (typeof galleryModal.close === 'function') {
+      if (galleryModal.open) galleryModal.close();
+    } else {
+      galleryModal.removeAttribute('open');
+      restoreGalleryFocus();
     }
   }
 
+  if (modalImage && modalImageOverlay) {
+    modalImage.addEventListener('error', () => {
+      modalImage.classList.add('hidden');
+      modalImageOverlay.classList.add('hidden');
+    });
+  }
+
   galleryItems.forEach(item => {
-    item.addEventListener('click', () => openModal(item.dataset.title, item.dataset.description));
+    item.addEventListener('click', () => openModal(item));
     item.addEventListener('keydown', event => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
@@ -149,15 +186,18 @@ export function initializeInteractions() {
     });
   });
 
+  galleryModal.addEventListener('close', restoreGalleryFocus);
   closeGalleryModal.addEventListener('click', closeModal);
-  document.getElementById('closeGalleryModalAction').addEventListener('click', closeModal);
+  closeGalleryModalAction.addEventListener('click', closeModal);
   galleryModal.addEventListener('click', event => {
     if (event.target === galleryModal) closeModal();
   });
 
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
-      if (!galleryModal.classList.contains('hidden')) closeModal();
+      if (galleryModal.hasAttribute('open') && typeof galleryModal.close !== 'function') {
+        closeModal();
+      }
       if (!mobileMenu.classList.contains('hidden')) setMobileMenuOpen(false);
     }
   });

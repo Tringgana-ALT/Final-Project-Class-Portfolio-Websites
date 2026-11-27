@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Ilustrasi Momen Kebersamaan Kelas 10 RPL">
+  <defs>
+    <linearGradient id="bg-class" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#042F2E"/>
+      <stop offset="52%" stop-color="#0F766E"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#bg-class)"/>
+  <circle cx="240" cy="145" r="135" fill="#2DD4BF" fill-opacity="0.14"/>
+  <circle cx="750" cy="160" r="155" fill="#38BDF8" fill-opacity="0.15"/>
+
+  <!-- Ocean wave base -->
+  <path d="M0 412 Q 240 375 480 414 T 960 400 L 960 540 L 0 540 Z" fill="#06182A" fill-opacity="0.72"/>
+
+  <!-- Classroom whiteboard -->
+  <g transform="translate(220, 86)">
+    <rect x="0" y="0" width="520" height="230" rx="22" fill="#082F49" stroke="#5EEAD4" stroke-opacity="0.55" stroke-width="3"/>
+    <rect x="24" y="24" width="472" height="182" rx="14" fill="#0A2540"/>
+    <!-- Diagrams on board -->
+    <rect x="52" y="54" width="130" height="44" rx="10" fill="#0D9488" fill-opacity="0.6" stroke="#5EEAD4"/>
+    <rect x="220" y="54" width="130" height="44" rx="10" fill="#0284C7" fill-opacity="0.6" stroke="#7DD3FC"/>
+    <rect x="136" y="130" width="160" height="44" rx="10" fill="#075985" stroke="#38BDF8"/>
+    <path d="M182 76 H220 M117 98 V152 H136 M285 98 V152 H296" fill="none" stroke="#99F6E4" stroke-width="2.5"/>
+    <circle cx="422" cy="112" r="34" fill="none" stroke="#38BDF8" stroke-width="5"/>
+    <path d="M422 78 A 34 34 0 0 1 456 112 L422 112 Z" fill="#2DD4BF"/>
+  </g>
+
+  <!-- Collaborative desk nodes -->
+  <g transform="translate(245, 348)">
+    <rect x="0" y="0" width="130" height="72" rx="16" fill="#0C4A6E" stroke="#7DD3FC" stroke-opacity="0.5" stroke-width="2"/>
+    <rect x="170" y="0" width="130" height="72" rx="16" fill="#0F766E" stroke="#5EEAD4" stroke-opacity="0.6" stroke-width="2"/>
+    <rect x="340" y="0" width="130" height="72" rx="16" fill="#0C4A6E" stroke="#7DD3FC" stroke-opacity="0.5" stroke-width="2"/>
+    <path d="M130 36 H170 M300 36 H340" stroke="#99F6E4" stroke-width="3" stroke-dasharray="6 5"/>
+  </g>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Ilustrasi Study Tour Kelas 10 RPL">
+  <defs>
+    <linearGradient id="bg-tour" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1E1B4B"/>
+      <stop offset="50%" stop-color="#0C4A6E"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="horizon-glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#0A2540" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#bg-tour)"/>
+
+  <!-- Stars -->
+  <circle cx="150" cy="95" r="2.5" fill="#E0F2FE" fill-opacity="0.8"/>
+  <circle cx="280" cy="70" r="2" fill="#BAE6FD" fill-opacity="0.7"/>
+  <circle cx="640" cy="85" r="3" fill="#E0F2FE" fill-opacity="0.85"/>
+  <circle cx="810" cy="115" r="2.5" fill="#7DD3FC" fill-opacity="0.7"/>
+  <circle cx="740" cy="60" r="2" fill="#FFFFFF" fill-opacity="0.6"/>
+
+  <!-- Sun / moon horizon glow -->
+  <circle cx="480" cy="270" r="145" fill="#38BDF8" fill-opacity="0.16"/>
+  <circle cx="480" cy="270" r="88" fill="#7DD3FC" fill-opacity="0.22"/>
+
+  <!-- Coastal mountains -->
+  <path d="M0 340 L170 235 L330 330 L510 215 L710 335 L850 250 L960 325 L960 380 L0 380 Z" fill="#082F49" fill-opacity="0.75"/>
+
+  <!-- Ocean waves -->
+  <path d="M0 365 Q 240 338 480 366 T 960 355 L 960 540 L 0 540 Z" fill="url(#horizon-glow)"/>
+  <path d="M0 430 Q 220 405 480 432 T 960 422 L 960 540 L 0 540 Z" fill="#06182A" fill-opacity="0.82"/>
+
+  <!-- Route arc & map pins -->
+  <path d="M235 280 Q 480 150 725 255" fill="none" stroke="#BAE6FD" stroke-dasharray="10 10" stroke-width="3"/>
+  <g transform="translate(215, 225)">
+    <path d="M20 0 C9 0 0 9 0 20 C0 35 20 52 20 52 C20 52 40 35 40 20 C40 9 31 0 20 0 Z" fill="#38BDF8"/>
+    <circle cx="20" cy="20" r="8" fill="#06182A"/>
+  </g>
+  <g transform="translate(705, 200)">
+    <path d="M20 0 C9 0 0 9 0 20 C0 35 20 52 20 52 C20 52 40 35 40 20 C40 9 31 0 20 0 Z" fill="#34D399"/>
+    <circle cx="20" cy="20" r="8" fill="#06182A"/>
+  </g>
+
+  <!-- Stylized tour bus card -->
+  <g transform="translate(335, 275)">
+    <rect x="0" y="16" width="290" height="106" rx="22" fill="#E0F2FE"/>
+    <rect x="14" y="32" width="262" height="44" rx="10" fill="#0C4A6E"/>
+    <rect x="26" y="40" width="54" height="28" rx="6" fill="#38BDF8" fill-opacity="0.8"/>
+    <rect x="92" y="40" width="54" height="28" rx="6" fill="#38BDF8" fill-opacity="0.8"/>
+    <rect x="158" y="40" width="54" height="28" rx="6" fill="#38BDF8" fill-opacity="0.8"/>
+    <rect x="224" y="40" width="40" height="28" rx="6" fill="#7DD3FC"/>
+    <rect x="24" y="88" width="110" height="12" rx="6" fill="#0284C7"/>
+    <circle cx="66" cy="124" r="22" fill="#0A2540" stroke="#BAE6FD" stroke-width="5"/>
+    <circle cx="224" cy="124" r="22" fill="#0A2540" stroke="#BAE6FD" stroke-width="5"/>
+  </g>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Ilustrasi Praktikum Pemrograman Kelas 10 RPL">
+  <defs>
+    <linearGradient id="bg-lab" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06182A"/>
+      <stop offset="55%" stop-color="#0C4A6E"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="screen-glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0A2540"/>
+      <stop offset="100%" stop-color="#082F49"/>
+    </linearGradient>
+    <linearGradient id="wave-front" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0EA5E9" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.18"/>
+    </linearGradient>
+    <pattern id="grid-lab" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#38BDF8" stroke-opacity="0.09" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#bg-lab)"/>
+  <rect width="960" height="540" fill="url(#grid-lab)"/>
+
+  <!-- Ambient glows -->
+  <circle cx="210" cy="130" r="140" fill="#38BDF8" fill-opacity="0.12"/>
+  <circle cx="770" cy="180" r="170" fill="#0EA5E9" fill-opacity="0.14"/>
+
+  <!-- Ocean waves -->
+  <path d="M0 430 Q 160 390 320 428 T 640 426 T 960 412 L 960 540 L 0 540 Z" fill="#075985" fill-opacity="0.55"/>
+  <path d="M0 462 Q 180 430 360 460 T 720 456 T 960 446 L 960 540 L 0 540 Z" fill="url(#wave-front)"/>
+
+  <!-- Code editor window -->
+  <g transform="translate(205, 86)">
+    <rect x="0" y="0" width="550" height="328" rx="20" fill="url(#screen-glow)" stroke="#38BDF8" stroke-opacity="0.45" stroke-width="2"/>
+    <rect x="0" y="0" width="550" height="44" rx="20" fill="#075985" fill-opacity="0.55"/>
+    <rect x="0" y="24" width="550" height="20" fill="#075985" fill-opacity="0.55"/>
+    <circle cx="28" cy="22" r="6" fill="#FB7185"/>
+    <circle cx="50" cy="22" r="6" fill="#FBBF24"/>
+    <circle cx="72" cy="22" r="6" fill="#34D399"/>
+    <rect x="175" y="13" width="200" height="18" rx="9" fill="#06182A" fill-opacity="0.65"/>
+
+    <!-- Sidebar -->
+    <rect x="18" y="62" width="106" height="244" rx="10" fill="#06182A" fill-opacity="0.6" stroke="#38BDF8" stroke-opacity="0.2"/>
+    <rect x="30" y="80" width="66" height="8" rx="4" fill="#38BDF8" fill-opacity="0.65"/>
+    <rect x="30" y="102" width="80" height="7" rx="3.5" fill="#7DD3FC" fill-opacity="0.35"/>
+    <rect x="30" y="120" width="58" height="7" rx="3.5" fill="#7DD3FC" fill-opacity="0.35"/>
+    <rect x="30" y="138" width="74" height="7" rx="3.5" fill="#34D399" fill-opacity="0.55"/>
+    <rect x="30" y="156" width="64" height="7" rx="3.5" fill="#7DD3FC" fill-opacity="0.35"/>
+
+    <!-- Code lines -->
+    <rect x="146" y="72" width="128" height="10" rx="5" fill="#38BDF8"/>
+    <rect x="284" y="72" width="88" height="10" rx="5" fill="#BAE6FD" fill-opacity="0.7"/>
+    <rect x="166" y="98" width="180" height="10" rx="5" fill="#34D399" fill-opacity="0.85"/>
+    <rect x="186" y="124" width="210" height="10" rx="5" fill="#E0F2FE" fill-opacity="0.65"/>
+    <rect x="186" y="150" width="142" height="10" rx="5" fill="#FBBF24" fill-opacity="0.8"/>
+    <rect x="338" y="150" width="96" height="10" rx="5" fill="#7DD3FC" fill-opacity="0.65"/>
+    <rect x="166" y="176" width="160" height="10" rx="5" fill="#38BDF8" fill-opacity="0.8"/>
+    <rect x="146" y="202" width="68" height="10" rx="5" fill="#38BDF8"/>
+
+    <!-- Terminal output panel -->
+    <rect x="146" y="232" width="382" height="74" rx="10" fill="#04111F" stroke="#0EA5E9" stroke-opacity="0.35"/>
+    <path d="M166 258 L176 265 L166 272" fill="none" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="188" y="261" width="140" height="8" rx="4" fill="#34D399" fill-opacity="0.85"/>
+    <rect x="166" y="282" width="240" height="7" rx="3.5" fill="#7DD3FC" fill-opacity="0.5"/>
+  </g>
+
+  <!-- Floating code bracket badges -->
+  <g transform="translate(126, 215)">
+    <rect width="60" height="60" rx="16" fill="#0A2540" stroke="#38BDF8" stroke-opacity="0.5" stroke-width="2"/>
+    <path d="M25 20 L16 30 L25 40 M35 20 L44 30 L35 40" fill="none" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(778, 128)">
+    <rect width="58" height="58" rx="16" fill="#0A2540" stroke="#34D399" stroke-opacity="0.55" stroke-width="2"/>
+    <circle cx="29" cy="29" r="10" fill="none" stroke="#34D399" stroke-width="2.5"/>
+    <path d="M29 14 V19 M29 39 V44 M14 29 H19 M39 29 H44" stroke="#34D399" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+</svg>
